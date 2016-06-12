@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel学院  -  优质Laravel中文学习资源平台</title>
+    <meta name="keywords" content="Laravel学院,Laravel,Lumen,PHP,PHP框架,文档,教程,中文,资源,学习">
+    <meta name="description" content="Laravel学院致力于提供优质Laravel中文学习资源">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://laravelacademy.org/xmlrpc.php">
+    <link rel="shortcut icon" href="/favicon.png" title="Favicon">
+    <link rel="alternate" type="application/rss+xml" title="Laravel学院 &raquo; Feed" href="http://laravelacademy.org/feed" />
+    <link rel="alternate" type="application/rss+xml" title="Laravel学院 &raquo; 评论Feed" href="http://laravelacademy.org/comments/feed" />
+    <script type="text/javascript">
+        window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/laravelacademy.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.7"}};
+        !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='dwqa-style-css'  href='http://laravelacademy.org/wp-content/plugins/dw-question-answer/templates/assets/css/style.css?ver=1111548461' type='text/css' media='all' />
+    <link rel='stylesheet' id='font-awesome-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/bootstrap/css/font-awesome.css' type='text/css' media='screen' />
+    <link rel='stylesheet' id='wp-pagenavi-css'  href='http://laravelacademy.org/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+    <link rel='stylesheet' id='ipt_kb-style-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/style.css?ver=1.6.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='ipt_kb-bootstrap-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/bootstrap/css/bootstrap.min.css?ver=1.6.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='ipt_kb-bootstrap-theme-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/bootstrap/css/bootstrap-theme.min.css?ver=1.6.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='ipt_kb-icomoon-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/icomoon/style.css?ver=1.6.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='ipt_kb-fix-css'  href='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/fix/fix.css?ver=1.6.0-1.6.1' type='text/css' media='all' />
+    <script type="text/javascript">
+        var duoshuoQuery = {"short_name":"laravelacademy","sso":{"login":"http:\/\/laravelacademy.org\/wp-login.php?action=duoshuo_login","logout":"http:\/\/laravelacademy.org\/wp-login.php?action=logout&_wpnonce=8ec8344476"},"theme":"default","stylePatch":"wordpress\/WP_Knowledge_Base"};
+        duoshuoQuery.sso.login += '&redirect_to=' + encodeURIComponent(window.location.href);
+        duoshuoQuery.sso.logout += '&redirect_to=' + encodeURIComponent(window.location.href);
+    </script>
+    <script type="text/javascript" src="http://static.duoshuo.com/embed.js" charset="UTF-8" async="async"></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-includes/js/jquery/jquery.js?ver=1.11.2'></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/bootstrap/js/bootstrap.min.js?ver=1.6.0'></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/bootstrap/js/jquery.ipt-kb-bootstrap.js?ver=1.6.0'></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/lib/sticky-kit/jquery.sticky-kit.min.js?ver=1.6.0'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var iptKBJS = {"ajaxurl":"http:\/\/laravelacademy.org\/wp-admin\/admin-ajax.php","ajax_error":"Oops, some problem to connect. Try again?"};
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/js/ipt-kb.js?ver=1.6.0'></script>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://laravelacademy.org/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://laravelacademy.org/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 4.2.7" />
+
+    <style>
+        .scroll-back-to-top-wrapper {
+            position: fixed;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+            text-align: center;
+            z-index: 99999999;
+            background-color: #e74430;
+            color: #eeeeee;
+            width: 50px;
+            height: 48px;
+            line-height: 48px;
+            right: 30px;
+            bottom: 30px;
+            padding-top: 2px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        .scroll-back-to-top-wrapper:hover {
+            background-color: #f4645f;
+            color: #eeeeee;
+        }
+        .scroll-back-to-top-wrapper.show {
+            visibility:visible;
+            cursor:pointer;
+            opacity: 1.0;
+        }
+        .scroll-back-to-top-wrapper i.fa {
+            line-height: inherit;
+        }
+        .scroll-back-to-top-wrapper .fa-lg {
+            vertical-align: 0;
+        }
+    </style><script type="text/javascript">
+    window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+    window._wp_rp_wp_ajax_url = "http://laravelacademy.org/wp-admin/admin-ajax.php";
+    window._wp_rp_plugin_version = '3.5.4';
+    window._wp_rp_post_id = '4813';
+    window._wp_rp_num_rel_posts = '5';
+    window._wp_rp_thumbnails = false;
+    window._wp_rp_post_title = '%E5%9F%BA%E4%BA%8ELaravel%2BAngularjs%2BBootstrap%2BAdminLTE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BF+%E2%80%94%E2%80%94+Laravel+Angular+Admin';
+    window._wp_rp_post_tags = ['gulp', '%E6%9D%83%E9%99%90', 'angularjs', 'oauth', 'jwt', 'dingo', '%E5%90%8E%E5%8F%B0', 'adminlte', 'laravel', '%E7%BD%91%E7%AB%99', 'bower', 'aa', 'admin', 'window', 'instal', 'ida', 'bootstrap', 'rest', 'api', 'class', 'artisan', 'a'];
+    window._wp_rp_promoted_content = true;
+</script>
+    <script type="text/javascript" src="https://wprp.zemanta.com/static/js/loader.js?version=3.5.4" async></script>
+    <link rel="stylesheet" href="http://laravelacademy.org/wp-content/plugins/wordpress-23-related-posts-plugin/static/themes/modern.css?version=3.5.4" />
+</head>
+
+<body class="home blog group-blog">
+<div id="page" class="hfeed site">
+<header id="masthead" class="site-header" role="banner">
+    <nav class="navbar navbar-default navbar-static-top main-navigation" role="navigation" id="site_navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="site-anchor" href="http://laravelacademy.org/">
+                    <img src="http://laravelacademy.org/wp-content/themes/wp-knowledge-base/logo.png" width="200" height="50" alt="">
+                </a>
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="menu-%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95" class="nav navbar-nav"><li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-7 dropdown"><a title="文档" href="#" data-toggle="dropdown" class="dropdown-toggle">文档 <span class="caret"></span></a>
+                    <ul role="menu" class=" dropdown-menu">
+                        <li id="menu-item-285" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-285"><a title="Laravel 5.1" href="http://laravelacademy.org/laravel-docs-5_1">Laravel 5.1</a></li>
+                        <li id="menu-item-2931" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2931"><a title="Laravel 5.2" href="http://laravelacademy.org/laravel-docs-5_2">Laravel 5.2</a></li>
+                        <li id="menu-item-508" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-508"><a title="Lumen" href="http://laravelacademy.org/lumen-docs">Lumen</a></li>
+                    </ul>
+                </li>
+                    <li id="menu-item-3168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-3168 dropdown"><a title="教程" href="#" data-toggle="dropdown" class="dropdown-toggle">教程 <span class="caret"></span></a>
+                        <ul role="menu" class=" dropdown-menu">
+                            <li id="menu-item-948" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-948"><a title="基础教程" href="http://laravelacademy.org/laravel-tutorial-5_1">基础教程</a></li>
+                            <li id="menu-item-2122" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2122"><a title="博客系列" href="http://laravelacademy.org/tutorials/blog">博客系列</a></li>
+                            <li id="menu-item-3513" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3513"><a title="新特性系列" href="http://laravelacademy.org/tutorials/feature">新特性系列</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-671" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-671 dropdown"><a title="项目" href="#" data-toggle="dropdown" class="dropdown-toggle">项目 <span class="caret"></span></a>
+                        <ul role="menu" class=" dropdown-menu">
+                            <li id="menu-item-2044" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2044"><a title="网站" href="http://laravelacademy.org/project/website">网站</a></li>
+                            <li id="menu-item-1327" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1327"><a title="扩展包" href="http://laravelacademy.org/project/packages">扩展包</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-159" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-159 dropdown"><a title="资源" href="#" data-toggle="dropdown" class="dropdown-toggle">资源 <span class="caret"></span></a>
+                        <ul role="menu" class=" dropdown-menu">
+                            <li id="menu-item-2482" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2482"><a title="设计模式" href="http://laravelacademy.org/resources/design-patterns">设计模式</a></li>
+                            <li id="menu-item-644" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-644"><a title="代码片段" href="http://laravelacademy.org/resources/code">代码片段</a></li>
+                            <li id="menu-item-3187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3187"><a title="运维部署" href="http://laravelacademy.org/resources/linux">运维部署</a></li>
+                            <li id="menu-item-3178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3178"><a title="编辑器" href="http://laravelacademy.org/resources/editor">编辑器</a></li>
+                            <li id="menu-item-680" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-680"><a title="工具系列" href="http://laravelacademy.org/resources/tools">工具系列</a></li>
+                            <li id="menu-item-410" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-410"><a title="相关下载" href="http://laravelacademy.org/resources-download">相关下载</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-4225" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-4225 dropdown"><a title="现代PHP" href="#" data-toggle="dropdown" class="dropdown-toggle">现代PHP <span class="caret"></span></a>
+                        <ul role="menu" class=" dropdown-menu">
+                            <li id="menu-item-4226" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4226"><a title="新特性" href="http://laravelacademy.org/modern-php/feature-modern-php">新特性</a></li>
+                            <li id="menu-item-4513" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4513"><a title="最佳实践" href="http://laravelacademy.org/modern-php/best-practice">最佳实践</a></li>
+                            <li id="menu-item-4496" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4496"><a title="编码规范" href="https://github.com/PizzaLiu/PHP-FIG">编码规范</a></li>
+                            <li id="menu-item-2397" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2397"><a title="PHP 7" href="http://laravelacademy.org/resources/php7">PHP 7</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-3695" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3695"><a title="招聘" href="http://laravelacademy.org/jobs">招聘</a></li>
+                    <li id="menu-item-599" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-599"><a title="新闻" href="http://laravelacademy.org/news">新闻</a></li>
+                    <li id="menu-item-3999" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3999"><a title="问答" href="http://laravelacademy.org/question">问答</a></li>
+                    <li id="menu-item-3925" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3925"><a title="投稿" href="http://laravelacademy.org/wp-admin/post-new.php">投稿</a></li>
+                    <li id="menu-item-1939" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1939"><a title="捐赠" href="http://laravelacademy.org/donate-us">捐赠</a></li>
+                    <li id="menu-item-38" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38"><a title="关于学院" href="http://laravelacademy.org/about-us">关于学院</a></li>
+                </ul>				</div>
+        </div>
+    </nav>
+</header><!-- #masthead -->
+
+<div id="content" class="site-content container">
+
+
+
+
+<div id="primary" class="content-area col-md-8">
+
+<div id="carousel-laravel-academy" class="carousel slide" data-ride="carousel" style="margin-bottom:20px;">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-laravel-academy" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-laravel-academy" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-laravel-academy" data-slide-to="2" class=""></li>
+        <li data-target="#carousel-laravel-academy" data-slide-to="3" class=""></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img data-src="holder.js/730x350/auto/#777:#555/text:First slide" alt="Laravel学院" src="/wp-statics/images/carousel/LaravelAcademy.jpg" data-holder-rendered="true">
+        </div>
+        <div class="item">
+            <a href="http://laravelacademy.org/laravel-docs-5_2" title="查看 Laravel 5.2 中文文档">
+                <img data-src="holder.js/730x350/auto/#666:#444/text:Second slide" alt="Laravel 5.2 中文文档" src="/wp-statics/images/carousel/laravel-5-2-docs-2.jpg" data-holder-rendered="true">
+            </a>
+        </div>
+        <div class="item">
+            <a href="http://laravelacademy.org/laravel-tutorial-5_1" title="查看 Laravel 5.1 基础教程">
+                <img data-src="holder.js/730x350/auto/#666:#444/text:Second slide" alt="Laravel 5.1 基础教程" src="/wp-statics/images/carousel/laravel_tutorial.jpg" data-holder-rendered="true">
+            </a>
+        </div>
+        <div class="item">
+            <a href="http://laravelacademy.org/lumen-docs" title="查看 Lumen 5.2 中文文档">
+                <img data-src="holder.js/730x350/auto/#555:#333/text:Third slide" alt="Lumen 5.2 中文文档" src="/wp-statics/images/carousel/lumen.jpg" data-holder-rendered="true">
+            </a>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#carousel-laravel-academy" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-laravel-academy" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="google-ads" style="margin-bottom:15px;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Laravel首页横幅广告 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-6544917749399342"
+         data-ad-slot="6933568512"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<main id="main" class="site-main" role="main">
+
+
+
+
+<article id="post-4813" class="kb-article-excerpt post-4813 post type-post status-publish format-standard has-post-thumbnail hentry category-website tag-adminlte tag-angularjs tag-dingo tag-gulp tag-jwt tag-laravel tag-oauth tag-422 tag-251">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4813.html" rel="bookmark">基于Laravel+Angularjs+Bootstrap+AdminLTE实现的后台模板 —— Laravel Angular Admin</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4813.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-10T01:15:53+08:00">2016年6月10日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 620 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4813.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/06/2016-06-10_005930-256x128.png" class="img-rounded wp-post-image" alt="Laravel-Angular-Admin" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4813.html" class="thumbnail"><img width="1414" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/06/2016-06-10_005930-1414x200.png" class="img wp-post-image" alt="Laravel-Angular-Admin" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>1、简介 Laravel Angular Admin 是一个基于Laravel + Angularjs + Bootstrap + AdminLTE 实现的后台模板，使用了Gulp工作流，并且支持 OAuth 和 JWT 认证，此外使用 Dingo API 实现了RESTful API，还用到了 Restangular 和 UI-Router，在权限控制方面，使用了 Romanbican&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4813.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4813.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/project/website" rel="category tag">网站</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/adminlte" rel="tag">AdminLTE</a>, <a href="http://laravelacademy.org/tags/angularjs" rel="tag">AngularJS</a>, <a href="http://laravelacademy.org/tags/dingo" rel="tag">Dingo</a>, <a href="http://laravelacademy.org/tags/gulp" rel="tag">Gulp</a>, <a href="http://laravelacademy.org/tags/jwt" rel="tag">JWT</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/oauth" rel="tag">OAuth</a>, <a href="http://laravelacademy.org/tags/%e5%90%8e%e5%8f%b0" rel="tag">后台</a>, <a href="http://laravelacademy.org/tags/%e6%9d%83%e9%99%90" rel="tag">权限</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4813.html#comments" class="ds-thread-count" data-thread-key="4813">3 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4797" class="kb-article-excerpt post-4797 post type-post status-publish format-standard has-post-thumbnail hentry category-best-practice tag-carbon tag-php tag-94 tag-775 tag-774 tag-755">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4797.html" rel="bookmark">【最佳实践系列】PHP 日期、时间和时区处理 API 及组件</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4797.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-07T23:26:53+08:00">2016年6月7日</time><time class="updated" datetime="2016-06-07T23:30:11+08:00">2016年6月7日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 304 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4797.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/06/datetime-256x128.jpg" class="img-rounded wp-post-image" alt="datetime" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4797.html" class="thumbnail"><img width="720" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/06/datetime-720x200.jpg" class="img wp-post-image" alt="datetime" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>处理日期和时间需要考虑很多事情，例如日期的格式、时区、闰年和天数各异的月份，自己处理太容易出错了，我们应该使用PHP 5.2.0引入的DateTime、DateIntervel和DateTimeZone这些类帮助我们创建及处理日期、时间和时区。 设置默认时区 首先我们要为PHP中处理日期和时间的函数设置默认时区，如果不设置的话，PHP会显示一个E_WARNING消息，设置默认时区有两种方&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4797.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4797.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/modern-php/best-practice" rel="category tag">最佳实践</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/carbon" rel="tag">Carbon</a>, <a href="http://laravelacademy.org/tags/php" rel="tag">PHP</a>, <a href="http://laravelacademy.org/tags/%e6%97%a5%e6%9c%9f" rel="tag">日期</a>, <a href="http://laravelacademy.org/tags/%e6%97%b6%e5%8c%ba" rel="tag">时区</a>, <a href="http://laravelacademy.org/tags/%e6%97%b6%e9%97%b4" rel="tag">时间</a>, <a href="http://laravelacademy.org/tags/%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" rel="tag">最佳实践</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4797.html#comments" class="ds-thread-count" data-thread-key="4797">2 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4764" class="kb-article-excerpt post-4764 post type-post status-publish format-standard has-post-thumbnail hentry category-best-practice tag-bcrypt tag-hash tag-laravel tag-php tag-577 tag-168 tag-755 tag-114 tag-113">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4764.html" rel="bookmark">【最佳实践系列】PHP 开发者如何做好密码保护 &#038; Laravel 底层密码存储和验证实现</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4764.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-07T01:55:13+08:00">2016年6月7日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 363 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4764.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/06/cwscrypto-php-hash-password-pbkdf2-bcrypt-256x128.jpg" class="img-rounded wp-post-image" alt="cwscrypto-php-hash-password-pbkdf2-bcrypt" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4764.html" class="thumbnail"><img width="560" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/06/cwscrypto-php-hash-password-pbkdf2-bcrypt-560x200.jpg" class="img wp-post-image" alt="cwscrypto-php-hash-password-pbkdf2-bcrypt" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>随着在线攻击的增多，密码安全越来越重要。作为开发者我们要担负起安全管理、计算哈希和存储用户密码的责任，不管应用是简单的游戏还是绝密商业文件的仓库，都要做到这一点。PHP内置了一些工具，让保护密码变得更加容易，本节我们就来讨论如何根据现代的安全措施来使用这些工具。 1、密码保护三原则 绝对不能知道用户的密码 我们绝对不能知道用户的密码，也不能有获取用户密码的方式，如果应用的数据库被黑，你肯&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4764.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4764.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/modern-php/best-practice" rel="category tag">最佳实践</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/bcrypt" rel="tag">Bcrypt</a>, <a href="http://laravelacademy.org/tags/hash" rel="tag">Hash</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/php" rel="tag">PHP</a>, <a href="http://laravelacademy.org/tags/%e5%ae%89%e5%85%a8" rel="tag">安全</a>, <a href="http://laravelacademy.org/tags/%e5%af%86%e7%a0%81" rel="tag">密码</a>, <a href="http://laravelacademy.org/tags/%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" rel="tag">最佳实践</a>, <a href="http://laravelacademy.org/tags/%e6%b3%a8%e5%86%8c" rel="tag">注册</a>, <a href="http://laravelacademy.org/tags/%e7%99%bb%e5%bd%95" rel="tag">登录</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4764.html#comments" class="ds-thread-count" data-thread-key="4764">1 Comment</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4746" class="kb-article-excerpt post-4746 post type-post status-publish format-standard has-post-thumbnail hentry category-tools tag-composer">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4746.html" rel="bookmark">composer 将远程的包更改为本地开发模式</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4746.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-06T23:13:34+08:00">2016年6月6日</time><time class="updated" datetime="2016-06-06T23:23:52+08:00">2016年6月6日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/imvkmark">imvkmark</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 195 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4746.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/06/PHP-Composer-Banner-256x128.png" class="img-rounded wp-post-image" alt="PHP-Composer-Banner" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4746.html" class="thumbnail"><img width="955" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/06/PHP-Composer-Banner-955x200.png" class="img wp-post-image" alt="PHP-Composer-Banner" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>有时候我们会遇到线上的 composer 开发包功能不是很完善，但是很多功能我们还能够用到，我们只能自己去修改一部分代码让这个包能够去运行，同时不使用 composer 进行更新，否则代码会再更新的时候再次被覆盖掉。 下边是以下几个步骤： 在 composer.json 中去掉调用 一般情况下，去掉包，包在进行更新的时候会自己删除。 在 vendor/composer/installed&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4746.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4746.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/resources/tools" rel="category tag">工具系列</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/composer" rel="tag">Composer</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4746.html#respond" class="ds-thread-count" data-thread-key="4746">Leave a comment</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4717" class="kb-article-excerpt post-4717 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-5-3 tag-echo tag-eloquent tag-laravel tag-186 tag-381 tag-82 tag-155">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4717.html" rel="bookmark">即将发布的 Laravel 5.3 将会带来哪些新功能，让我们先睹为快</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4717.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-03T00:12:16+08:00">2016年6月3日</time><time class="updated" datetime="2016-06-10T01:16:30+08:00">2016年6月10日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 1,884 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4717.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/06/laravel-5-3-new-feature-256x128.jpg" class="img-rounded wp-post-image" alt="laravel-5-3-new-feature" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4717.html" class="thumbnail"><img width="1000" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/06/laravel-5-3-new-feature-1000x200.jpg" class="img wp-post-image" alt="laravel-5-3-new-feature" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>Laravel 5.3 目前正在开发中，和所有的新版本 Laravel 发布一样，这一版本将会增加一些新功能和新特性，下面让我们一睹为快。 1、Eloquent 集合作为队列任务构造函数参数优化 Laraval队列任务在分发时如果以一个Eloquent模型作为构造函数参数的时候，我们可以使用SerializesModels trait只序列化模型的主键，当真正处理这个队列任务的时候才会根&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4717.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4717.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/news" rel="category tag">新闻</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/5-3" rel="tag">5.3</a>, <a href="http://laravelacademy.org/tags/echo" rel="tag">Echo</a>, <a href="http://laravelacademy.org/tags/eloquent" rel="tag">Eloquent</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/%e5%88%86%e9%a1%b5" rel="tag">分页</a>, <a href="http://laravelacademy.org/tags/%e6%96%b0%e7%89%b9%e6%80%a7" rel="tag">新特性</a>, <a href="http://laravelacademy.org/tags/%e8%bf%81%e7%a7%bb" rel="tag">迁移</a>, <a href="http://laravelacademy.org/tags/%e9%98%9f%e5%88%97" rel="tag">队列</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4717.html#comments" class="ds-thread-count" data-thread-key="4717">12 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4699" class="kb-article-excerpt post-4699 post type-post status-publish format-standard has-post-thumbnail hentry category-best-practice tag-blade tag-html tag-htmlentities tag-laravel tag-php tag-view tag-xss tag-577 tag-38 tag-764">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4699.html" rel="bookmark">【最佳实践系列】PHP 安全三板斧：过滤、验证和转义之转义篇 &#038; Blade模板引擎避免XSS攻击原理探究</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4699.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-02T02:03:30+08:00">2016年6月2日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 545 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4699.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-256x128.jpg" class="img-rounded wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4699.html" class="thumbnail"><img width="500" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-500x200.jpg" class="img wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>PHP 转义实现 把输出渲染成网页或API响应时，一定要转义输出，这也是一种防护措施，能避免渲染恶意代码，造成XSS攻击，还能防止应用的用户无意中执行恶意代码。 我们可以使用前面提到的htmlentities函数转移输出，该函数的第二个参数一定要使用ENT_QUOTES，让这个函数转义单引号和双引号，而且，还要在第三个参数中指定合适的字符编码（通常是UTF-8），下面的例子演示了如何在渲&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4699.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4699.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/modern-php/best-practice" rel="category tag">最佳实践</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/blade" rel="tag">Blade</a>, <a href="http://laravelacademy.org/tags/html" rel="tag">HTML</a>, <a href="http://laravelacademy.org/tags/htmlentities" rel="tag">htmlentities</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/php" rel="tag">PHP</a>, <a href="http://laravelacademy.org/tags/view" rel="tag">View</a>, <a href="http://laravelacademy.org/tags/xss" rel="tag">XSS</a>, <a href="http://laravelacademy.org/tags/%e5%ae%89%e5%85%a8" rel="tag">安全</a>, <a href="http://laravelacademy.org/tags/%e8%a7%86%e5%9b%be" rel="tag">视图</a>, <a href="http://laravelacademy.org/tags/%e8%bd%ac%e4%b9%89" rel="tag">转义</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4699.html#comments" class="ds-thread-count" data-thread-key="4699">3 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4671" class="kb-article-excerpt post-4671 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-laravel tag-763">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4671.html" rel="bookmark">学习Laravel，你应该关注的14个国外 Laravel 牛人</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4671.html" rel="bookmark"><time class="entry-date published" datetime="2016-06-01T00:02:05+08:00">2016年6月1日</time><time class="updated" datetime="2016-06-01T00:02:52+08:00">2016年6月1日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 973 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4671.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/05/laravelpeople-taylor-otwell-256x128.jpg" class="img-rounded wp-post-image" alt="laravelpeople-taylor-otwell" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4671.html" class="thumbnail"><img width="256" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/05/laravelpeople-taylor-otwell-256x200.jpg" class="img wp-post-image" alt="laravelpeople-taylor-otwell" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>1、Taylor Otwell 这个还需要介绍吗？好吧，Laravel框架是他写的。 Twitter：@taylorotwell 个人博客：http://taylorotwell.com/ LinkedIn：https://www.linkedin.com/in/taylor-otwell-23794592 2、Jeffrey Way 创建并维护Lastcasts，这是一个教你学习Lar&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4671.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4671.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/news" rel="category tag">新闻</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/%e7%89%9b%e4%ba%ba" rel="tag">牛人</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4671.html#comments" class="ds-thread-count" data-thread-key="4671">5 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4646" class="kb-article-excerpt post-4646 post type-post status-publish format-standard has-post-thumbnail hentry category-code tag-5-2 tag-entrust tag-laravel tag-422 tag-251 tag-642">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4646.html" rel="bookmark">Laravel 5.2 后台开发实例 —— 基于权限自动生成面包屑及菜单栏</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4646.html" rel="bookmark"><time class="entry-date published" datetime="2016-05-31T00:15:40+08:00">2016年5月31日</time><time class="updated" datetime="2016-05-31T10:52:01+08:00">2016年5月31日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/bigpang">bigpang</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 1,691 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4646.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/05/687474703a2f2f6f377a65376f7034742e626b742e636c6f7564646e2e636f6d2f515125453625383825414125453525394225424532303136303533303136333131322e706e67-256x128.png" class="img-rounded wp-post-image" alt="Laravel后台开发" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4646.html" class="thumbnail"><img width="1920" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/05/687474703a2f2f6f377a65376f7034742e626b742e636c6f7564646e2e636f6d2f515125453625383825414125453525394225424532303136303533303136333131322e706e67-1920x200.png" class="img wp-post-image" alt="Laravel后台开发" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>简介 基于Laravel 5.2 与 zizaco/entrust 权限管理、开箱即用的后台模板，面包屑、菜单栏都是基于权限来生成，集成了laravel-debugbar 超好用调试工具，带有日志解析查看模块。 截图 源码地址 https://github.com/big-pang/laravel5.2-Admin 安装 git clone 到本地 执行 composer install&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4646.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4646.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/resources/code" rel="category tag">代码片段</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/5-2" rel="tag">5.2</a>, <a href="http://laravelacademy.org/tags/entrust" rel="tag">Entrust</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/%e5%90%8e%e5%8f%b0" rel="tag">后台</a>, <a href="http://laravelacademy.org/tags/%e6%9d%83%e9%99%90" rel="tag">权限</a>, <a href="http://laravelacademy.org/tags/%e6%a8%a1%e6%9d%bf" rel="tag">模板</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4646.html#comments" class="ds-thread-count" data-thread-key="4646">25 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4628" class="kb-article-excerpt post-4628 post type-post status-publish format-standard has-post-thumbnail hentry category-best-practice tag-filter_var tag-laravel tag-php tag-validator tag-577 tag-213">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4628.html" rel="bookmark">最佳实践系列（四）—— PHP 安全三板斧：过滤、验证和转义之验证篇 &#038; Laravel底层字段验证实现</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4628.html" rel="bookmark"><time class="entry-date published" datetime="2016-05-30T01:02:32+08:00">2016年5月30日</time><time class="updated" datetime="2016-05-30T01:03:38+08:00">2016年5月30日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 475 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4628.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-256x128.jpg" class="img-rounded wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4628.html" class="thumbnail"><img width="500" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-500x200.jpg" class="img wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>2、验证数据 PHP原生实现 验证输入数据也很重要，与过滤不同，验证不会从输入数据中删除信息，而只是确认用户输入是否符合预期。如果输入的是电子邮件地址，则确保用户输入的是电子邮件地址；如果需要的是电话号码，则确保用户输入的是电话号码，这就是验证要做的事儿。 验证是为了保证在应用的存储层保存符合特定格式的正确数据，如果遇到无效数据，要中止数据存储操作，并显示相应的错误信息来提醒用户输入正确&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4628.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4628.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/modern-php/best-practice" rel="category tag">最佳实践</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/filter_var" rel="tag">filter_var</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/php" rel="tag">PHP</a>, <a href="http://laravelacademy.org/tags/validator" rel="tag">Validator</a>, <a href="http://laravelacademy.org/tags/%e5%ae%89%e5%85%a8" rel="tag">安全</a>, <a href="http://laravelacademy.org/tags/%e9%aa%8c%e8%af%81" rel="tag">验证</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4628.html#respond" class="ds-thread-count" data-thread-key="4628">Leave a comment</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+
+<article id="post-4610" class="kb-article-excerpt post-4610 post type-post status-publish format-standard has-post-thumbnail hentry category-best-practice tag-html tag-laravel tag-php tag-sql tag-xss tag-577 tag-89 tag-241">
+    <header class="entry-header page-header">
+        <h2 class="entry-title"><a href="http://laravelacademy.org/post/4610.html" rel="bookmark">最佳实践系列（三）—— PHP 安全三板斧：过滤、验证和转义之过滤篇 &#038; Laravel底层SQL注入规避</a></h2>
+
+        <div class="entry-meta text-muted">
+            <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on <a href="http://laravelacademy.org/post/4610.html" rel="bookmark"><time class="entry-date published" datetime="2016-05-29T22:48:32+08:00">2016年5月29日</time><time class="updated" datetime="2016-05-31T09:47:37+08:00">2016年5月31日</time></a></span><span class="byline"> by <span class="author vcard"><i class="glyphicon glyphicon-user"></i> <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a></span></span>			<span class="post-views" style="float:right;"><i class="glyphicon glyphicon-eye-open"></i> 474 views</span>		</div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left kb-thumb-medium hidden-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4610.html" class="thumbnail"><img width="256" height="128" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-256x128.jpg" class="img-rounded wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+    <div class="kb-thumb-large visible-xs">
+        <a rel="bookmark" href="http://laravelacademy.org/post/4610.html" class="thumbnail"><img width="500" height="200" src="http://laravelacademy.org/wp-content/uploads/2016/05/W3-z-QmUs3Ialv4Poqy2-500x200.jpg" class="img wp-post-image" alt="PHP安全漫谈" /></a>
+    </div>
+
+    <div class="entry entry-excerpt">
+        <p>我们在开发应用时，一般有个约定：不要信任任何来自不受自己控制的数据源中的数据。例如以下这些外部源： $_GET $_POST $_REQUEST $_COOKIE $argv php://stdin php://input file_get_contents() 远程数据库 远程API 来自客户端的数据 所有这些外部源都可能是攻击媒介，可能会（有意或无意）把恶意数据注入PHP脚本。编写接&hellip;</p>
+    </div>
+
+    <div class="clearfix"></div>
+    <footer class="entry-meta">
+        <p class="visible-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4610.html" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="pull-right hidden-xs">
+            <a rel="bookmark" href="http://laravelacademy.org/post/4610.html" class="btn btn-primary"><i class="glyphicon glyphicon-link"></i> 阅读全文</a>
+        </p>
+        <p class="text-muted hidden-xs meta-data">
+											<span class="cat-links">
+					<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类： <a href="http://laravelacademy.org/modern-php/best-practice" rel="category tag">最佳实践</a>				</span>
+				
+								<span class="tags-links">
+					<i class="glyphicon glyphicon-tags"></i> 标签： <a href="http://laravelacademy.org/tags/html" rel="tag">HTML</a>, <a href="http://laravelacademy.org/tags/laravel" rel="tag">Laravel</a>, <a href="http://laravelacademy.org/tags/php" rel="tag">PHP</a>, <a href="http://laravelacademy.org/tags/sql%e6%b3%a8%e5%85%a5" rel="tag">SQL注入</a>, <a href="http://laravelacademy.org/tags/xss" rel="tag">XSS</a>, <a href="http://laravelacademy.org/tags/%e5%ae%89%e5%85%a8" rel="tag">安全</a>, <a href="http://laravelacademy.org/tags/%e6%a8%a1%e5%9e%8b" rel="tag">模型</a>, <a href="http://laravelacademy.org/tags/%e8%bf%87%e6%bb%a4" rel="tag">过滤</a>				</span>
+            <span class="comments-link">&nbsp;&nbsp;<i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;<a href="http://laravelacademy.org/post/4610.html#comments" class="ds-thread-count" data-thread-key="4610">2 Comments</a></span>
+        </p>
+        <div class="clearfix"></div>
+    </footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+<div class="clearfix"></div>
+
+
+<div class="wp-content-pager">
+    <div class='wp-pagenavi'>
+        <span class='current'>1</span><a class="page larger" href="http://laravelacademy.org/page/2">2</a><a class="page larger" href="http://laravelacademy.org/page/3">3</a><a class="page larger" href="http://laravelacademy.org/page/4">4</a><a class="page larger" href="http://laravelacademy.org/page/5">5</a><span class='extend'>...</span><a class="larger page" href="http://laravelacademy.org/page/10">10</a><a class="larger page" href="http://laravelacademy.org/page/20">20</a><a class="larger page" href="http://laravelacademy.org/page/30">30</a><span class='extend'>...</span><a class="nextpostslink" rel="next" href="http://laravelacademy.org/page/2">»</a><a class="last" href="http://laravelacademy.org/page/40">末页 »</a>
+    </div>			</div>
+
+
+</main><!-- #main -->
+</div><!-- #primary -->
+
+<div id="secondary" class="widget-area col-md-4" role="complementary">
+    <aside id="text-2" class="widget widget_text panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">文档 &amp; 下载 &amp; 公告</h3></div><div class="panel-body">			<div class="textwidget"><p><a href="http://laravelacademy.org/laravel-docs-5_2"><strong>Laravel 5.2 中文文档</strong></a><br />
+        <a href="http://laravelacademy.org/laravel-docs-5_1"><strong>Laravel 5.1 中文文档</strong></a><br />
+        <a href="http://laravelacademy.org/laravel-tutorial-5_1"><strong>Laravel 5.1 基础教程</strong></a><br />
+        <a href="http://laravelacademy.org/tutorials/blog"><strong>Laravel 5.1 博客实战</strong></a><br />
+        <a href="http://laravelacademy.org/laravel-docs-5_2#quickstart-tutorial"><strong>Laravel 5.2 快速入门教程</strong></a><br />
+        <a href="http://laravelacademy.org/laravel-project"><strong>Laravel 完整开源项目大全</strong></a><br />
+        <a href="https://cs.phphub.org" target="_blank"><strong>Laravel 5.1 命令/门面/函数速查表</strong></a><br />
+        <a href="http://laravelacademy.org/lumen-docs"><strong>Lumen 中文文档</strong></a><br />
+        <a href="http://laravelacademy.org/resources-download"><strong>中文离线文档&一键安装包下载</strong></a><br />
+        <a href="http://laravelacademy.org/about-us#weixin-qrcode"><strong>Laravel 学院微信群（红包与大牛同在）</strong></a><br />
+        <a target="_blank" href="http://jq.qq.com/?_wv=1027&k=2L2qJgA"><strong>QQ群：248571983</strong></a></p>
+    </div>
+    </div></aside><aside id="search-3" class="widget widget_search panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">全站搜索</h3></div><div class="panel-body"><form role="search" method="get" class="search-form" action="http://laravelacademy.org/">
+    <div class="form-group">
+        <div class="input-group input-group-lg">
+            <input type="search" class="search-field form-control" value="" name="s" />
+            <span class="input-group-btn"><button type="submit" class="btn btn-default"><span class="ipt-icon-search"></span></button></span>
+        </div>
+    </div>
+</form>
+</div></aside><aside id="views-2" class="widget widget_views panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">热门浏览</h3></div><div class="panel-body"><div class="list-group">
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/2784.html">
+        <span class="badge">23,660</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  [ Laravel 5.2 文档 ] 基础 —— HTTP 路由</h3>
+        <span class="clearfix"></span>
+    </a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/153.html">
+    <span class="badge">22,802</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  Laravel 精选资源大全（持续更新）</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/2995.html">
+    <span class="badge">18,927</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  [ Laravel 5.2 文档 ] Eloquent ORM —— 起步</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/138.html">
+    <span class="badge">17,783</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  [ Laravel 5.1 文档 ] Eloquent ORM —— 起步</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/2720.html">
+    <span class="badge">17,472</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  [ Laravel 5.2 文档 ] 开始 —— 安装</h3>
+    <span class="clearfix"></span>
+</a></div>
+</div></aside><aside id="ipt-kb-popular-widget-2" class="widget ipt-kb-popular-widget panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">热门推荐</h3></div><div class="panel-body"><div class="list-group">
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/398.html">
+        <span class="badge">100</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  HTTP路由实例教程（一）—— 基本使用及路由参数</h3>
+        <span class="clearfix"></span>
+    </a>
+
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/417.html">
+        <span class="badge">53</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  HTTP路由实例教程（二）—— 路由命名和路由分组</h3>
+        <span class="clearfix"></span>
+    </a>
+
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/769.html">
+        <span class="badge">49</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  Laravel 服务容器实例教程  —— 深入理解控制反转（IoC）和依赖注入（DI）</h3>
+        <span class="clearfix"></span>
+    </a>
+
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/306.html">
+        <span class="badge">41</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  在 Windows 中安装 Laravel 5.1.X</h3>
+        <span class="clearfix"></span>
+    </a>
+
+    <a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/post/525.html">
+        <span class="badge">33</span>
+        <h3><span class="glyphicon ipt-icon-file"></span>  HTTP路由实例教程（三）—— CSRF攻击原理及其防护</h3>
+        <span class="clearfix"></span>
+    </a>
+</div></div></aside><aside id="dwqa-popular-question-2" class="widget dwqa-widget dwqa-popular-question panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">热门问答</h3></div><div class="panel-body"><div class="list-group"><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/question/laravel%e6%80%8e%e4%b9%88%e4%bd%bf%e7%94%a8%e8%87%aa%e5%b7%b1%e5%86%99%e7%9a%84%e7%b1%bb">
+    <span class="badge">2</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  laravel怎么使用自己写的类</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/question/laravel-5-2%e7%89%88%e6%9c%ac%e9%aa%8c%e8%af%81%e8%a1%a8%e5%8d%95bug">
+    <span class="badge">1</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  laravel 5.2版本验证表单BUG</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/question/%e6%8c%89%e7%85%a7%e5%ad%a6%e9%99%a2%e5%90%9blaravel-excel%e6%89%a9%e5%b1%95%e5%8c%85%e7%9a%84%e4%be%8b%e5%ad%90%e8%bf%9b%e5%85%a5%e6%95%b0%e6%8d%ae%e5%af%bc%e5%85%a5%e6%93%8d%e4%bd%9c%ef%bc%8c">
+    <span class="badge">1</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  按照学院君Laravel Excel扩展包的例子进入数据导入操作，出现下面报错，请看看如何解决？</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/question/%e5%85%b3%e4%ba%8e%e8%bf%87%e6%bb%a4%e7%9a%84%e9%97%ae%e9%a2%98%ef%bc%8c%e6%88%91%e6%94%be%e5%9c%a8%e6%8e%a7%e5%88%b6%e5%99%a8%e9%87%8c%e9%9d%a2%e5%91%a2%e8%bf%98%e6%98%af%e8%bf%98%e6%98%af%e6%94%be">
+    <span class="badge">1</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  关于过滤的问题，我放在控制器里面呢还是还是放在中间件</h3>
+    <span class="clearfix"></span>
+</a><a rel="bookmark" class="list-group-item kb-list-date kb-post-list" href="http://laravelacademy.org/question/composer-create-project-laravellaravel-blog-%e7%bb%88%e7%ab%af%e6%b2%a1%e5%8f%8d%e5%ba%94">
+    <span class="badge">1</span>
+    <h3><span class="glyphicon ipt-icon-file"></span>  composer create-project laravel/laravel blog 终端没反应</h3>
+    <span class="clearfix"></span>
+</a></div></div></aside><aside id="tag_cloud-2" class="widget widget_tag_cloud panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">标签云</h3></div><div class="panel-body"><div class="tagcloud"><a href='http://laravelacademy.org/tags/5-1' class='tag-link-7' title='64个话题' style='font-size: 15.538461538462pt;'>5.1</a>
+    <a href='http://laravelacademy.org/tags/5-2' class='tag-link-380' title='84个话题' style='font-size: 16.713286713287pt;'>5.2</a>
+    <a href='http://laravelacademy.org/tags/api' class='tag-link-539' title='12个话题' style='font-size: 8.6853146853147pt;'>API</a>
+    <a href='http://laravelacademy.org/tags/blade' class='tag-link-42' title='14个话题' style='font-size: 9.3706293706294pt;'>Blade</a>
+    <a href='http://laravelacademy.org/tags/bootstrap' class='tag-link-187' title='13个话题' style='font-size: 9.0769230769231pt;'>Bootstrap</a>
+    <a href='http://laravelacademy.org/tags/composer' class='tag-link-13' title='17个话题' style='font-size: 10.153846153846pt;'>Composer</a>
+    <a href='http://laravelacademy.org/tags/cookie' class='tag-link-33' title='11个话题' style='font-size: 8.3916083916084pt;'>Cookie</a>
+    <a href='http://laravelacademy.org/tags/eloquent' class='tag-link-88' title='30个话题' style='font-size: 12.405594405594pt;'>Eloquent</a>
+    <a href='http://laravelacademy.org/tags/gulp' class='tag-link-137' title='12个话题' style='font-size: 8.6853146853147pt;'>Gulp</a>
+    <a href='http://laravelacademy.org/tags/homestead' class='tag-link-18' title='16个话题' style='font-size: 9.8601398601399pt;'>Homestead</a>
+    <a href='http://laravelacademy.org/tags/http' class='tag-link-27' title='37个话题' style='font-size: 13.286713286713pt;'>HTTP</a>
+    <a href='http://laravelacademy.org/tags/json' class='tag-link-37' title='22个话题' style='font-size: 11.132867132867pt;'>JSON</a>
+    <a href='http://laravelacademy.org/tags/laravel' class='tag-link-5' title='297个话题' style='font-size: 22pt;'>Laravel</a>
+    <a href='http://laravelacademy.org/tags/lumen' class='tag-link-239' title='48个话题' style='font-size: 14.363636363636pt;'>Lumen</a>
+    <a href='http://laravelacademy.org/tags/memcached' class='tag-link-131' title='10个话题' style='font-size: 8pt;'>Memcached</a>
+    <a href='http://laravelacademy.org/tags/php' class='tag-link-225' title='71个话题' style='font-size: 16.027972027972pt;'>PHP</a>
+    <a href='http://laravelacademy.org/tags/redis' class='tag-link-132' title='18个话题' style='font-size: 10.34965034965pt;'>Redis</a>
+    <a href='http://laravelacademy.org/tags/session' class='tag-link-32' title='20个话题' style='font-size: 10.741258741259pt;'>Session</a>
+    <a href='http://laravelacademy.org/tags/url' class='tag-link-65' title='12个话题' style='font-size: 8.6853146853147pt;'>URL</a>
+    <a href='http://laravelacademy.org/tags/%e4%b8%ad%e9%97%b4%e4%bb%b6' class='tag-link-25' title='25个话题' style='font-size: 11.622377622378pt;'>中间件</a>
+    <a href='http://laravelacademy.org/tags/%e4%ba%8b%e4%bb%b6' class='tag-link-58' title='22个话题' style='font-size: 11.132867132867pt;'>事件</a>
+    <a href='http://laravelacademy.org/tags/%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5' class='tag-link-258' title='10个话题' style='font-size: 8pt;'>代码片段</a>
+    <a href='http://laravelacademy.org/tags/%e4%bb%bb%e5%8a%a1' class='tag-link-189' title='13个话题' style='font-size: 9.0769230769231pt;'>任务</a>
+    <a href='http://laravelacademy.org/tags/%e4%be%9d%e8%b5%96%e6%b3%a8%e5%85%a5' class='tag-link-29' title='15个话题' style='font-size: 9.5664335664336pt;'>依赖注入</a>
+    <a href='http://laravelacademy.org/tags/%e5%88%a0%e9%99%a4' class='tag-link-79' title='14个话题' style='font-size: 9.3706293706294pt;'>删除</a>
+    <a href='http://laravelacademy.org/tags/%e5%8d%87%e7%ba%a7' class='tag-link-9' title='11个话题' style='font-size: 8.3916083916084pt;'>升级</a>
+    <a href='http://laravelacademy.org/tags/%e5%8d%9a%e5%ae%a2' class='tag-link-333' title='14个话题' style='font-size: 9.3706293706294pt;'>博客</a>
+    <a href='http://laravelacademy.org/tags/%e5%a2%9e%e5%88%a0%e6%94%b9%e6%9f%a5' class='tag-link-309' title='11个话题' style='font-size: 8.3916083916084pt;'>增删改查</a>
+    <a href='http://laravelacademy.org/tags/%e5%ae%89%e8%a3%85' class='tag-link-11' title='29个话题' style='font-size: 12.307692307692pt;'>安装</a>
+    <a href='http://laravelacademy.org/tags/%e5%bb%ba%e7%ab%99%e5%b7%a5%e5%85%b7' class='tag-link-314' title='11个话题' style='font-size: 8.3916083916084pt;'>建站工具</a>
+    <a href='http://laravelacademy.org/tags/%e6%89%a9%e5%b1%95%e5%8c%85' class='tag-link-426' title='27个话题' style='font-size: 12.013986013986pt;'>扩展包</a>
+    <a href='http://laravelacademy.org/tags/%e6%8e%a7%e5%88%b6%e5%99%a8' class='tag-link-26' title='13个话题' style='font-size: 9.0769230769231pt;'>控制器</a>
+    <a href='http://laravelacademy.org/tags/%e6%94%af%e4%bb%98' class='tag-link-308' title='11个话题' style='font-size: 8.3916083916084pt;'>支付</a>
+    <a href='http://laravelacademy.org/tags/%e6%95%99%e7%a8%8b' class='tag-link-255' title='12个话题' style='font-size: 8.6853146853147pt;'>教程</a>
+    <a href='http://laravelacademy.org/tags/%e6%95%b0%e6%8d%ae%e5%ba%93' class='tag-link-68' title='39个话题' style='font-size: 13.482517482517pt;'>数据库</a>
+    <a href='http://laravelacademy.org/tags/%e6%95%b0%e7%bb%84' class='tag-link-104' title='11个话题' style='font-size: 8.3916083916084pt;'>数组</a>
+    <a href='http://laravelacademy.org/tags/%e6%96%87%e6%a1%a3' class='tag-link-6' title='147个话题' style='font-size: 19.062937062937pt;'>文档</a>
+    <a href='http://laravelacademy.org/tags/%e6%96%b0%e7%89%b9%e6%80%a7' class='tag-link-381' title='10个话题' style='font-size: 8pt;'>新特性</a>
+    <a href='http://laravelacademy.org/tags/%e6%9c%8d%e5%8a%a1%e5%ae%b9%e5%99%a8' class='tag-link-54' title='12个话题' style='font-size: 8.6853146853147pt;'>服务容器</a>
+    <a href='http://laravelacademy.org/tags/%e6%9c%8d%e5%8a%a1%e6%8f%90%e4%be%9b%e8%80%85' class='tag-link-51' title='16个话题' style='font-size: 9.8601398601399pt;'>服务提供者</a>
+    <a href='http://laravelacademy.org/tags/%e6%9f%a5%e8%af%a2' class='tag-link-70' title='12个话题' style='font-size: 8.6853146853147pt;'>查询</a>
+    <a href='http://laravelacademy.org/tags/%e6%9f%a5%e8%af%a2%e6%9e%84%e5%bb%ba%e5%99%a8' class='tag-link-72' title='12个话题' style='font-size: 8.6853146853147pt;'>查询构建器</a>
+    <a href='http://laravelacademy.org/tags/%e6%a8%a1%e5%9e%8b' class='tag-link-89' title='27个话题' style='font-size: 12.013986013986pt;'>模型</a>
+    <a href='http://laravelacademy.org/tags/%e6%b3%a8%e5%86%8c' class='tag-link-114' title='10个话题' style='font-size: 8pt;'>注册</a>
+    <a href='http://laravelacademy.org/tags/%e6%b5%8b%e8%af%95' class='tag-link-206' title='10个话题' style='font-size: 8pt;'>测试</a>
+    <a href='http://laravelacademy.org/tags/%e7%94%a8%e6%88%b7' class='tag-link-117' title='12个话题' style='font-size: 8.6853146853147pt;'>用户</a>
+    <a href='http://laravelacademy.org/tags/%e7%9b%91%e5%90%ac%e5%99%a8' class='tag-link-150' title='10个话题' style='font-size: 8pt;'>监听器</a>
+    <a href='http://laravelacademy.org/tags/%e7%bc%93%e5%ad%98' class='tag-link-30' title='15个话题' style='font-size: 9.5664335664336pt;'>缓存</a>
+    <a href='http://laravelacademy.org/tags/%e7%bd%91%e7%ab%99' class='tag-link-265' title='10个话题' style='font-size: 8pt;'>网站</a>
+    <a href='http://laravelacademy.org/tags/%e8%87%aa%e5%ae%9a%e4%b9%89' class='tag-link-105' title='19个话题' style='font-size: 10.545454545455pt;'>自定义</a>
+    <a href='http://laravelacademy.org/tags/%e8%a1%a8%e5%8d%95' class='tag-link-212' title='13个话题' style='font-size: 9.0769230769231pt;'>表单</a>
+    <a href='http://laravelacademy.org/tags/%e8%a7%86%e5%9b%be' class='tag-link-38' title='30个话题' style='font-size: 12.405594405594pt;'>视图</a>
+    <a href='http://laravelacademy.org/tags/%e8%ae%a4%e8%af%81' class='tag-link-115' title='14个话题' style='font-size: 9.3706293706294pt;'>认证</a>
+    <a href='http://laravelacademy.org/tags/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f' class='tag-link-454' title='37个话题' style='font-size: 13.286713286713pt;'>设计模式</a>
+    <a href='http://laravelacademy.org/tags/%e8%af%b7%e6%b1%82' class='tag-link-31' title='28个话题' style='font-size: 12.111888111888pt;'>请求</a>
+    <a href='http://laravelacademy.org/tags/%e8%b7%af%e7%94%b1' class='tag-link-23' title='36个话题' style='font-size: 13.188811188811pt;'>路由</a>
+    <a href='http://laravelacademy.org/tags/%e9%85%8d%e7%bd%ae' class='tag-link-12' title='27个话题' style='font-size: 12.013986013986pt;'>配置</a>
+    <a href='http://laravelacademy.org/tags/%e9%94%99%e8%af%af' class='tag-link-148' title='12个话题' style='font-size: 8.6853146853147pt;'>错误</a>
+    <a href='http://laravelacademy.org/tags/%e9%98%9f%e5%88%97' class='tag-link-155' title='17个话题' style='font-size: 10.153846153846pt;'>队列</a>
+    <a href='http://laravelacademy.org/tags/%e9%aa%8c%e8%af%81' class='tag-link-213' title='14个话题' style='font-size: 9.3706293706294pt;'>验证</a></div>
+</div></aside><aside id="text-4" class="widget widget_text panel panel-default"><div class="panel-heading"><h3 class="widget-title panel-title">最新评论</h3></div><div class="panel-body">			<div class="textwidget"><ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+</div>
+</div></aside>				<div class="google-ads" style="text-align:center;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Laravel学院侧边栏摩天大楼 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:600px"
+         data-ad-client="ca-pub-6544917749399342"
+         data-ad-slot="1805364912"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+</div><!-- #secondary -->
+
+
+<div class="clearfix"></div>
+<div class="panel panel-default friend-link">
+    <div class="panel-heading">友情链接（互换友链联系微信：yaojinbu，暂只接受相关站点）</div>
+    <div class="panel-body">
+        <a href="http://laravel.so" title="Laravel技巧" target="_blank">Laravel.so</a>
+        <a href="http://www.yuansir-web.com" title="Yuansir-web菜鸟|LNMP学习笔记" target="_blank">Yuansir-web菜鸟</a>
+        <a href="https://www.insp.top" title="灵感-来自生活的馈赠" target="_blank">Inspirer</a>
+        <a href="http://www.zhangxihai.cn" title="神奇的胖子" target="_blank">神奇的胖子</a>
+        <a href="http://www.chenruixuan.com" title="天宝寺||陈瑞轩" target="_blank">天宝寺||陈瑞轩</a>
+        <a href="http://www.uncletoo.com" title="专注PHP技术推广" target="_blank">UncleToo</a>
+        <a href="http://www.nginx.cn" title="Nginx中文站" target="_blank">Nginx中文站</a>
+        <a href="http://www.phpxs.com" title="编织未来 成就梦想" target="_blank">PHP新手</a>
+        <a href="https://laravist.com" title="Laravel Artist For Web Development" target="_blank">Laravist</a>
+        <a href="https://www.shiyanlou.com" title="第一家以实验为核心的IT在线教育平台" target="_blank">实验楼</a>
+        <a href="http://9iphp.com" title="All time is no time when it is past" target="_blank">Specs’ Blog</a>
+        <a href="http://yii-china.com" title="Yii中文网" target="_blank">Yii中文网</a>
+        <a href="http://www.joyphper.net" title="一个分享个人学习、开发经验的Blog" target="_blank">PHP爱好者</a>
+        <a href="http://www.daixiaorui.com" title="专注于PHP学习，PHP源码分享" target="_blank">PHP学习</a>
+        <a href="http://www.phpddt.com" title="关注PHP开发，提供原创PHP教程" target="_blank">PHP点点通</a>
+        <a href="http://www.phpsong.com" title="一个php程序猿分享的经验" target="_blank">小松博客</a>
+        <a href="http://www.itcast.cn/php" title="传智播客PHP学院" target="_blank">PHP培训</a>
+        <a href="http://www.91qingmai.com" title="互联网项目实训领导者" target="_blank">青麦学院</a>
+        <a href="http://www.gouguoyin.cn" title="挨踢男的葵花宝典" target="_blank">够过瘾</a>
+        <a href="http://www.5ibc.net/" title="专注PHP程序员一站式免费学习教程" target="_blank">PHP教程</a>
+        <a href="http://www.webyang.net/" title="AndyYang的技术博客" target="_blank">WebYang.NET</a>
+        <a href="http://notes.cribug.com/" title="Cribug's Notes" target="_blank">Cribug's Notes</a>
+        <a href="http://www.jsout.com/" title="专注Web前端开发" target="_blank">前端汇</a>
+    </div>
+</div>
+
+
+
+</div><!-- #content -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <p class="copyright text-muted">
+            &copy; 2015-2016 Laravel Academy
+            |
+            <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备16003554号</a>
+            |
+            <a href="http://laravelacademy.org/feed">订阅</a>
+            |
+            <a href="http://laravelacademy.org/wp-admin/post-new.php">投稿</a>
+            |
+            <a href="http://laravelacademy.org/donate-us">捐赠</a>
+            |
+            <a href="http://gjsq.me/15561494" target="_blank">VPN</a>
+            |
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256294264'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1256294264' type='text/javascript'%3E%3C/script%3E"));</script>
+        </p>
+    </div><!-- .site-info -->
+    <div class="scroll-back-to-top-wrapper">
+	<span class="scroll-back-to-top-inner">
+					<i class="fa fa-2x fa-arrow-up"></i>
+			</span>
+    </div><script type='text/javascript'>
+    /* <![CDATA[ */
+    var scrollBackToTop = {"scrollDuration":"500","fadeDuration":"0.5"};
+    /* ]]> */
+</script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/plugins/scroll-back-to-top/assets/js/scroll-back-to-top.js'></script>
+    <script type='text/javascript' src='http://laravelacademy.org/wp-content/themes/wp-knowledge-base/js/skip-link-focus-fix.js?ver=1.6.0'></script>
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"laravelacademy"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+                || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?0149df826a6be49c34721817692bbf7f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-66519426-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.457 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2016-06-12 14:07:37 -->
+
+<!-- Super Cache dynamic page detected but late init not set. See the readme.txt for further details. -->
+<!-- Dynamic Super Cache -->
+<!-- Compression = gzip -->
