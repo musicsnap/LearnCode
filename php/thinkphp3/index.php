@@ -17,6 +17,8 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 define("CSS","./Public/Css");
 define("JS","./Public/Js");
 define("IMAGES","./Public/Images");
+define("FONTS","./Public/Fonts");
+define("PLUGINS","./Public/Plugins");
 
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('APP_DEBUG',True);
