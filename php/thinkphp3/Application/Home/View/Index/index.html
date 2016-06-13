@@ -53,68 +53,121 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-md-9">
-                <div class="jumbotron">
-                    <h1 class="blog-title">The Star Blog</h1>
-                    <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+            <div id="primary" class="col-lg-9 col-md-9">
+                <div id="carousel-blog" class="carousel slide" data-ride="carousel" style="margin-bottom:20px;">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-blog" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-blog" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-blog" data-slide-to="2" class=""></li>
+                        <li data-target="#carousel-blog" data-slide-to="3" class=""></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img data-src="holder.js/730x350/auto/#777:#555/text:First slide" alt="This Star Blog" src="/" data-holder-rendered="true">
+                        </div>
+                        <div class="item">
+                            <a href="#" title="This Star Blog">
+                                <img data-src="holder.js/730x350/auto/#666:#444/text:Second slide" alt="This Star Blog" src="/" data-holder-rendered="true">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#" title="This Star Blog">
+                                <img data-src="holder.js/730x350/auto/#666:#444/text:Second slide" alt="This Star Blog" src="/" data-holder-rendered="true">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#" title="This Star Blog">
+                                <img data-src="holder.js/730x350/auto/#555:#333/text:Third slide" alt="This Star Blog" src="/" data-holder-rendered="true">
+                            </a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-blog" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-blog" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <div class="col-md-9">
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">Sample blog post</h2>
-                        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+                <div id="main" class="col-md-9 site-main">
+                    <div id="post-4813" class="kb-article-excerpt post-4813 post type-post status-publish format-standard has-post-thumbnail hentry category-website tag-adminlte tag-angularjs tag-dingo tag-gulp tag-jwt tag-laravel tag-oauth tag-422 tag-251">
+                        <div class="entry-header page-header">
+                            <h2 class="entry-title"><a href="http://laravelacademy.org/post/4813.html" rel="bookmark">基于Laravel+Angularjs+Bootstrap+AdminLTE实现的后台模板 —— Laravel Angular Admin</a></h2>
+                            <div class="entry-meta text-muted">
+                                <span class="posted-on"><i class="glyphicon glyphicon-calendar"></i> Posted on
+                                    <a href="http://laravelacademy.org/post/4813.html" rel="bookmark">
+                                    <time class="entry-date published" datetime="2016-06-10T01:15:53+08:00">2016年6月10日</time>
+                                    </a>
+                                </span>
+                                <span class="byline"> by
+                                    <span class="author vcard">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <a class="url fn n" href="http://laravelacademy.org/post/author/nonfu">学院君</a>
+                                    </span>
+                                </span>
+                                <span class="post-views" style="float:right;">
+                                    <i class="glyphicon glyphicon-eye-open"></i> 620 views
+                                </span>
+                            </div>
+                        </div>
 
-                        <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-                        <hr>
-                        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        <blockquote>
-                            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        </blockquote>
-                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                        <h2>Heading</h2>
-                        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <h3>Sub-heading</h3>
-                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                        <pre><code>Example code block</code></pre>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-                        <h3>Sub-heading</h3>
-                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                        <ul>
-                            <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                            <li>Donec id elit non mi porta gravida at eget metus.</li>
-                            <li>Nulla vitae elit libero, a pharetra augue.</li>
-                        </ul>
-                        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-                        <ol>
-                            <li>Vestibulum id ligula porta felis euismod semper.</li>
-                            <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                            <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-                        </ol>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-                    </div>
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">Another blog post</h2>
-                        <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+                        <div class="clearfix"></div>
 
-                        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        <blockquote>
-                            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        </blockquote>
-                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    </div>
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">New feature</h2>
-                        <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
+                        <div class="pull-left kb-thumb-medium hidden-xs">
+                            <a rel="bookmark" href="#" class="thumbnail">
+                                <img width="256" height="128" src="/" class="img-rounded wp-post-image" alt="This Star Blog" />
+                            </a>
+                        </div>
+                        <div class="kb-thumb-large visible-xs">
+                            <a rel="bookmark" href="#" class="thumbnail">
+                                <img width="1414" height="200" src="/" class="img wp-post-image" alt="This Star Blog" />
+                            </a>
+                        </div>
 
-                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                        <ul>
-                            <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                            <li>Donec id elit non mi porta gravida at eget metus.</li>
-                            <li>Nulla vitae elit libero, a pharetra augue.</li>
-                        </ul>
-                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+                        <div class="entry entry-excerpt">
+                            <p>1、简介 Laravel Angular Admin 是一个基于Laravel + Angularjs + Bootstrap + AdminLTE 实现的后台模板，使用了Gulp工作流，并且支持 OAuth 和 JWT 认证，此外使用 Dingo API 实现了RESTful API，还用到了 Restangular 和 UI-Router，在权限控制方面，使用了 Romanbican&hellip;</p>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="entry-meta">
+                            <p class="visible-xs">
+                                <a rel="bookmark" href="#" class="btn btn-primary btn-block">
+                                    <i class="glyphicon glyphicon-link"></i>阅读全文
+                                </a>
+                            </p>
+                            <p class="pull-right hidden-xs">
+                                <a rel="bookmark" href="#" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-link"></i>阅读全文
+                                </a>
+                            </p>
+                            <p class="text-muted hidden-xs meta-data">
+								<span class="cat-links">
+					                <i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;分类：
+                                    <a href="#" rel="category tag">网站</a>
+                                </span>
+								<span class="tags-links">
+					                <i class="glyphicon glyphicon-tags"></i> 标签：
+                                    <a href="#" rel="tag">AdminLTE</a>,
+                                    <a href="#" rel="tag">AngularJS</a>,
+                                    <a href="#" rel="tag">Dingo</a>,
+                                    <a href="#" rel="tag">Gulp</a>,
+                                    <a href="#" rel="tag">JWT</a>,
+                                    <a href="#" rel="tag">Laravel</a>,
+                                    <a href="#" rel="tag">OAuth</a>,
+                                    <a href="#" rel="tag">后台</a>,
+                                    <a href="#" rel="tag">权限</a>
+                                </span>
+                                <span class="comments-link">&nbsp;&nbsp;
+                                    <i class="glyphicon ipt-icon-bubbles2"></i>&nbsp;
+                                    <a href="#" class="ds-thread-count" data-thread-key="4813">3 Comments</a>
+                                </span>
+                            </p>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
+                    <div class="clearfix"></div>
+
                     <nav>
                         <ul class="pager">
                             <li><a href="#">上一页</a></li>
@@ -123,7 +176,7 @@
                     </nav>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div id="secondary" class="col-lg-3 col-md-3">
                 <div class="btn-group btn-group-justified">
                     <a class="btn btn-success disabled" href="/registration">
                         <i class="fa fa-calendar-check-o"></i>
@@ -154,6 +207,18 @@
         </div>
     </div>
 
+</div>
+
+<div class="footer">
+    <div class="container">
+        <span class="pull-left">Copyright &copy; 2009-2016 by
+            <a href="#">The Star Blog</a>. All Rights Reserved.
+        </span>
+        <span class="pull-right">
+            <a href="http://www.miibeian.gov.cn" target="_blank">京ICP备09104811号</a>
+            <script src="http://s4.cnzz.com/z_stat.php?id=1256642902&web_id=1256642902" language="JavaScript"></script>
+        </span>
+    </div>
 </div>
 </body>
 </html>
