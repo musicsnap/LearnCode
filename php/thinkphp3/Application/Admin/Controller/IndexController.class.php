@@ -2,6 +2,10 @@
 namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+
+    public function _initialize(){
+
+    }
     public function indexAction(){
         $this->display('index');
     }
@@ -10,4 +14,6 @@ class IndexController extends Controller {
         echo "hello this is a main.html";
         die();
     }
+
+
 }
