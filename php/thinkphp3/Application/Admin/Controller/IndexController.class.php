@@ -12,8 +12,13 @@ class IndexController extends Controller {
     }
 
     public function mainAction(){
+//        $model = D('Index');
+
+//        var_dump($model);
+
         echo "hello this is a main.html";
-        die();
+//        die();
+        $this->display('main');
     }
 
 
