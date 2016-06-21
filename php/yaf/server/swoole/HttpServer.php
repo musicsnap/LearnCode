@@ -5,17 +5,17 @@ class HttpServer
 	public $http;
 	private $application;
 	public function __construct() {
-		$http = new swoole_http_server("127.0.0.1", 9501);
+		$http = new swoole_http_server("0.0.0.0", 9501);
 		$http->set(
 			array(
 			'worker_num' => 16,
 			'daemonize' => true,
-	        'max_request' => 10000,
-	        'dispatch_mode' => 1
+	            	'max_request' => 10000,
+	            	'dispatch_mode' => 1
 			)
 		);
-		define('APPLICATION_PATH', dirname(dirname(__DIR__)). "/application". '/..');
-		$this->application = new Yaf_Application(APPLICATION_PATH."/conf/application.ini");
+		define('APPLICATION_PATH', dirname(dirname(__DIR__)). "/application");
+		$this->application = new Yaf_Application(dirname(APPLICATION_PATH). "/conf/application.ini");
 		$this->application->bootstrap();
 		$http->on('Request',array($this , 'onRequest'));
 		$http->start();

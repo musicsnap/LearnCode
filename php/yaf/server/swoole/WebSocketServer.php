@@ -6,8 +6,8 @@ class WebSocketServer
 	public static $instance;
 	private $application;
 	public function __construct() {
-		define('APPLICATION_PATH', dirname(dirname(__DIR__)). "/application". '/..');
-		$this->application = new Yaf_Application(APPLICATION_PATH."/conf/application.ini");
+		define('APPLICATION_PATH', dirname(dirname(__DIR__)). "/application");
+		$this->application = new Yaf_Application(dirname(APPLICATION_PATH). "/conf/application.ini");
 		$this->application->bootstrap();
 
 		$server = new swoole_websocket_server("0.0.0.0", 9503);
@@ -40,8 +40,7 @@ class WebSocketServer
         	$server->push($i,'游客'.$frame->fd.'说：' .$frame->data);
     	}*/
     	if('smes_closed'==$frame->data){
-//    		$server->Close($frame->fd);
-			$server->push($frame->fd,$frame->fd);
+    		$server->Close($frame->fd);
     	}else{
 			$result_fd=json_decode($result,true);
 		    foreach($result_fd as $id=>$fd){

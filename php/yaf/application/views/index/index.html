@@ -1,9 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/header.html"}
+<body class="infobar-offcanvas">
+{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/topnav.html"}
+<div id="wrapper">
+	<div id="layout-static">
+		{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/menu.html"}
+		<div class="static-content-wrapper">
+			<div class="static-content">
+					<iframe src="/index/main" id="iframe-main" frameborder='0' style="width:100%;height: 100%;"></iframe>
+			</div>
 
+			<footer role="contentinfo">
+				<div class="clearfix">
+					<ul class="list-unstyled list-inline pull-left">
+						<li><h6 style="margin: 0;"> &copy; 2015-2016 SumiBuy</h6></li>
+					</ul>
+					<button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
+				</div>
+			</footer>
+		</div>
+	</div>
+</div>
 </body>
-</html>
+<script type="text/javascript">
+	//初始化相关元素高度
+	function init(){
+		var oTOP =$("#topnav").height();
+		var oWin = $(window).height();
+		$("body").height(oWin-oTOP);
+		$("#iframe-main").height(oWin-oTOP);
+		$("#menu_sidebar").height(oWin-oTOP);
+		$("#menu_sidebar").css("overflow-x","hidden");
+		$("#menu_sidebar").css("overflow-y","scroll");
+	}
+	$(function(){
+		$(window).resize(function(){
+			init();
+		});
+	});
+</script>
+{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/footer.html"}
