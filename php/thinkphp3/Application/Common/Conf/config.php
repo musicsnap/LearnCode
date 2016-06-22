@@ -15,4 +15,11 @@ return array(
 
 //    'SHOW_PAGE_TRACE' =>true,
 
+    'TMPL_PARSE_STRING'     =>array(
+        //,自定义路径常量，用于后台样式加载
+        '__ADMIN__'             =>  __ROOT__.'/Public/Admin/',
+        //,自定义路径常量，用于前台样式加载
+        '__HOME__'             =>  __ROOT__.'/Public/Home/',
+    ),
+
 );
