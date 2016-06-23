@@ -1,0 +1,23 @@
+如何设置一个严格30分钟过期的Session
+作者: Laruence
+本文地址: http://www.laruence.com/2012/01/10/2469.html
+转载请注明出处
+第一种回答
+那么, 最常见的一种回答是: 设置Session的过期时间, 也就是session.gc_maxlifetime, 这种回答是不正确的, 原因如下:
+1. 首先, 这个PHP是用一定的概率来运行session的gc的, 也就是session.gc_probability和session.gc_divisor(介绍参看 深入理解PHP原理之Session Gc的一个小概率Notice), 这个默认的值分别是1和100, 也就是有1%的机会, PHP会在一个Session启动时, 运行Session gc. 不能保证到30分钟的时候一定会过期.
+2. 那设置一个大概率的清理机会呢? 还是不妥, 为什么? 因为PHP使用stat Session文件的修改时间来判断是否过期, 如果增大这个概率一来会降低性能, 二来, PHP使用”一个”文件来保存和一个会话相关的Session变量, 假设我5分钟前设置了一个a=1的Session变量, 5分钟后又设置了一个b=2的Seesion变量, 那么这个Session文件的修改时间为添加b时刻的时间, 那么a就不能在30分钟的时候, 被清理了. 另外还有下面第三个原因.
+3. PHP默认的(Linux为例), 是使用/tmp 作为Session的默认存储目录, 并且手册中也有如下的描述:
+Note: 如果不同的脚本具有不同的 session.gc_maxlifetime 数值但是共享了同一个地方存储会话数据，则具有最小数值的脚本会清理数据。此情况下，与 session.save_path 一起使用本指令。
+也就是说, 如果有俩个应用都没有指定自己独立的save_path, 一个设置了过期时间为2分钟(假设为A), 一个设置为30分钟(假设为B), 那么每次当A的Session gc运行的时候, 就会同时删除属于应用B的Session files.
+所以, 第一种答案是不”完全严格”正确的.
+第二种答案
+还有一种常见的答案是: 设置Session ID的载体, Cookie的过期时间, 也就是session.cookie_lifetime. 这种回答也是不正确的, 原因如下:
+这个过期只是Cookie过期, 换个说法这点就考察Cookie和Session的区别, Session过期是服务器过期, 而Cookie过期是客户端(浏览器)来保证的, 即使你设置了Cookie过期, 这个只能保证标准浏览器到期的时候, 不会发送这个Cookie(包含着Session ID), 而如果通过构造请求, 还是可以使用这个Session ID的值.
+第三种答案
+使用memcache, redis等, okey, 这种答案是一种正确答案. 不过, 很显然出题者肯定还会接着问你, 如果只是使用PHP呢?
+第四种答案
+当然, 面试不是为了难道你, 而是为了考察思考的周密性. 在这个过程中我会提示出这些陷阱, 所以一般来说, 符合题意的做法是:
+1. 设置Cookie过期时间30分钟, 并设置Session的lifetime也为30分钟.
+2. 自己为每一个Session值增加Time stamp.
+3. 每次访问之前, 判断时间戳.
+最后, 有同学问, 为什么要设置30分钟的过期时间: 这个, 首先这是为了面试, 第二, 实际使用场景的话, 比如30分钟就过期的优惠劵?

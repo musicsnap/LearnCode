@@ -1,0 +1,196 @@
+{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/header.html"}
+{literal}
+<script type="text/javascript">
+
+</script>
+{/literal}
+<body>
+<div class="page-content">
+    <ol class="breadcrumb">
+        <li><a href="javascript:void(0);">{$titlecfg.menu}</a></li>
+        <li><a href="javascript:void(0);">{$titlecfg.sub_menu}</a></li>
+        <li class="active"><a href="javascript:void(0);">{$titlecfg.site_menu}</a></li>
+    </ol>
+    <div class="page-heading">
+        <h1>{$titlecfg.site_menu}</h1>
+    </div>
+    <div class="container-fluid">
+        <div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="amazo-tile tile-success">
+                        <div class="tile-heading">
+                            <div class="title">会员</div>
+                            <div class="secondary">past {$days} days</div>
+                        </div>
+                        <div class="tile-body">
+                            <div class="content">{$usercount}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="amazo-tile tile-info" href="#">
+                        <div class="tile-heading">
+                            <div class="title">订单</div>
+                            <div class="secondary">past {$days} days</div>
+                        </div>
+                        <div class="tile-body">
+                            <div class="content">{$ordercount}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="amazo-tile tile-white">
+                        <div class="tile-heading">
+                            <div class="title">报价</div>
+                            <div class="secondary">past {$days} days</div>
+                        </div>
+                        <div class="tile-body">
+                            <span class="content">{$quotecount}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="amazo-tile tile-white">
+                        <div class="tile-heading">
+                            <span class="title">求购</span>
+                            <span class="secondary">past {$days} days</span>
+                        </div>
+                        <div class="tile-body">
+                            <span class="content">{$inquirycount}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="chart1" style="width: 800px;height: 600px;"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="chart2" style="width: 800px;height: 600px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{literal}
+<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var currenct_day = {/literal}{$currenct_day}{literal};
+        var currenct_daycount = {/literal}{$currenct_daycount}{literal};
+        var quote_daycount = {/literal}{$quote_daycount}{literal};
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('chart1'));
+                    option = {
+                        title : {
+                            text: '当月会员的数量',
+                            subtext: '每天的注册数'
+                        },
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data:['每天的注册数']
+                        },
+                        toolbox: {
+                            show : true,
+                            feature : {
+//                                mark : {show: true},
+//                                dataView : {show: true, readOnly: false},
+//                                magicType : {show: true, type: ['line', 'bar']},
+//                                restore : {show: true},
+//                                saveAsImage : {show: true}
+                            }
+                        },
+                        calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : currenct_day
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                name:'注册数',
+                                type:'bar',
+                                data:currenct_daycount,
+                            },
+                        ]
+                    };
+                    myChart.setOption(option);
+                }
+        );
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('chart2'));
+                    option = {
+                        title : {
+                            text: '当月报价公司数量',
+                            subtext: '每天的报价公司数'
+                        },
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data:['每天报价的公司']
+                        },
+                        toolbox: {
+                            show : true,
+                            feature : {
+//                                mark : {show: true},
+//                                dataView : {show: true, readOnly: false},
+//                                magicType : {show: true, type: ['line', 'bar']},
+//                                restore : {show: true},
+//                                saveAsImage : {show: true}
+                            }
+                        },
+                        calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : currenct_day
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                name:'报价的公司',
+                                type:'bar',
+                                data:quote_daycount,
+                            },
+                        ]
+                    };
+                    myChart.setOption(option);
+                }
+        );
+    });
+</script>
+{/literal}
+{include file = $smarty.const.APPLICATION_PATH|cat:"/application/views/common/footer.html"}

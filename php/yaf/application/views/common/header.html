@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Avenger Admin Theme</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="description" content="Avenger Admin Theme">
+    <meta name="author" content="KaijuThemes">
+    <!--<link href='http://fonts.googleapis.com/css?family=RobotoDraft:300,400,400italic,500,700' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700' rel='stylesheet' type='text/css'>-->
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="/assets/js/media.match.min.js"></script>
+    <script type="text/javascript" src="/assets/js/placeholder.min.js"></script>
+    <![endif]-->
+
+    <link type="text/css" href="/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">        <!-- Font Awesome -->
+    <link type="text/css" href="/assets/css/styles.css" rel="stylesheet">                                     <!-- Core CSS with all styles -->
+    <!--<link type="text/css" href="/bootstrap/css/animate.min.css" rel="stylesheet">                                     &lt;!&ndash; Core CSS with all styles &ndash;&gt;-->
+    <!--<link type="text/css" href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">                                     &lt;!&ndash; Core CSS with all styles &ndash;&gt;-->
+
+    <link type="text/css" href="/assets/plugins/jstree/dist/themes/avenger/style.min.css" rel="stylesheet">    <!-- jsTree -->
+    <link type="text/css" href="/assets/plugins/codeprettifier/prettify.css" rel="stylesheet">                <!-- Code Prettifier -->
+    <link type="text/css" href="/assets/plugins/iCheck/skins/minimal/blue.css" rel="stylesheet">              <!-- iCheck -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
+    <!--[if lt IE 9]>
+    <link type="text/css" href="/assets/css/ie8.css" rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/charts-flot/excanvas.min.js"></script>
+    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
+    <script type="text/javascript" src="/assets/js/jqueryui-1.9.2.min.js"></script> 							<!-- Load jQueryUI -->
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
+    <script type="text/javascript" src="/assets/plugins/easypiechart/jquery.easypiechart.js"></script> 		<!-- EasyPieChart-->
+    <script type="text/javascript" src="/assets/plugins/sparklines/jquery.sparklines.min.js"></script>  		<!-- Sparkline -->
+    <script type="text/javascript" src="/assets/plugins/jstree/dist/jstree.min.js"></script>  				<!-- jsTree -->
+    <script type="text/javascript" src="/assets/plugins/codeprettifier/prettify.js"></script> 				<!-- Code Prettifier  -->
+    <script type="text/javascript" src="/assets/plugins/bootstrap-switch/bootstrap-switch.js"></script> 		<!-- Swith/Toggle Button -->
+    <script type="text/javascript" src="/assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js"></script>  <!-- Bootstrap Tabdrop -->
+    <script type="text/javascript" src="/assets/plugins/iCheck/icheck.min.js"></script>     					<!-- iCheck -->
+    <script type="text/javascript" src="/assets/js/enquire.min.js"></script> 									<!-- Enquire for Responsiveness -->
+    <!--<script type="text/javascript" src="/assets/plugins/bootbox/bootbox.js"></script>							&lt;!&ndash; Bootbox &ndash;&gt;-->
+    <script type="text/javascript" src="/assets/plugins/simpleWeather/jquery.simpleWeather.min.js"></script> <!-- Weather plugin-->
+    <script type="text/javascript" src="/assets/plugins/nanoScroller/js/jquery.nanoscroller.min.js"></script> <!-- nano scroller -->
+    <script type="text/javascript" src="/assets/plugins/jquery-mousewheel/jquery.mousewheel.min.js"></script> 	<!-- Mousewheel support needed for jScrollPane -->
+    <script type="text/javascript" src="/assets/js/application.js"></script>
+    <!--<script type="text/javascript" src="/assets/plugins/jquery-notific8/jquery.notific8.js"></script>-->
+    <!--<script src="/js/notification.js" type="text/javascript"></script>-->
+    <!-- End loading site level scripts -->
+    {literal}
+    <script type="text/javascript">
+        $(function () {
+            $(".top_menu li a").on("click",function (e) {
+                e.preventDefault();
+                var link = $(this).attr('link');
+                if(link=='/'){
+                    window.location.href='/';
+                }
+                if(link){
+                    $("#iframe-main").attr("src", link);
+                }
+            });
+//
+//            $(".sub_menu li a").on("click",function (e) {
+//                e.preventDefault();
+//                $("#iframe-main").attr("src", $(this).attr('link'));
+//            });
+        });
+        $(function () {
+            $('.icheck input').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+        });
+    </script>
+    {/literal}
+</head>
