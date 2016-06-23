@@ -1,0 +1,60 @@
+<div class="static-sidebar-wrapper sidebar-midnightblue">
+    <div class="static-sidebar" style="position: relative; width: auto; height: 100%;">
+        <div class="sidebar" id="menu_sidebar">
+            <div class="widget stay-on-collapse" id="widget-welcomebox">
+                <div class="widget-body welcome-box tabular">
+                    <div class="tabular-row">
+                        <div class="tabular-cell welcome-avatar">
+                            <a href="javascript:void (0);"><img src="/upload/{$user_info.personpic}" class="avatar personal"></a>
+                        </div>
+                        <div class="tabular-cell welcome-options">
+                            <span class="welcome-text">Welcome,</span>
+                            <a href="javascript:void (0);" class="name personal">{$user_info.realname}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget stay-on-collapse" id="widget-sidebar">
+                <nav role="navigation" class="widget-body">
+                    <ul class="acc-menu top_menu">
+                        {foreach from=$MenuList key=key1 item=item1}
+                        <li class="nav-separator">{$item1.name}</li>
+                            {foreach from=$item1.sub_menu key=key2 item=item2}
+                            <li>
+                                <a href="javascript:void(0)" link="{$item2.link}">
+                                    <i class="{$item2.icon}"></i>
+                                    <span>{$item2.name}</span>
+                                    <span class="badge badge-dark"></span>
+                                </a>
+                                {if !empty($item2.sub_menu)}
+                                <ul class="acc-menu sub_menu">
+                                {foreach from=$item2.sub_menu key=key3 item=item3}
+                                    <li>
+                                        <a href="javascript:void(0) " link="{$item3.link}">
+                                            <i class="{$item3.icon}"></i>
+                                            <span>{$item3.name}</span>
+                                            <span class="badge badge-dark"></span>
+                                        </a>
+                                    </li>
+                                {/foreach}
+                                </ul>
+                                {/if}
+                            </li>
+                            {/foreach}
+                        {/foreach}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{literal}
+<script type="text/javascript">
+    $(function () {
+        $(".personal").on("click",function () {
+            var url = "/worker/personal";
+            $("#iframe-main").attr("src", url);
+        });
+    });
+</script>
+{/literal}
