@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//首页
-Route::get('/index','Home\IndexController@index');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
