@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -24,11 +26,25 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect users after login / registration.
+     * 设置成功登录后转向的页面:
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public $redirectPath = '/admin/index';
+
+    /**
+     * 设置登录失败后转向的页面
+     *
+     * @var string
+     */
+    protected $loginPath = '/auth/login';
+
+    /**
+     * 设置退出登录后转向的页面
+     *
+     * @var string
+     */
+    protected $redirectAfterLogout = '/auth/login';
 
     /**
      * Create a new authentication controller instance.
@@ -38,6 +54,35 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+
+
+    /**
+     * 显示应用登录页面
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogin(){
+        if (view()->exists('auth.authenticate')) {
+            return view('auth.authenticate');
+        }
+        return view('auth.login');
+    }
+    /**
+     * 登录请求提交
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postLogin(){
+
+
+    }
+
+    public function getLogout(){
+
+
     }
 
     /**
