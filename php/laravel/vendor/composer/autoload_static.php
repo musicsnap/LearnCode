@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4a476317146a71f54df7713bb8740120
+class ComposerStaticInitaa0c8fbb783b61f7076a75144949a582
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -282,7 +282,7 @@ class ComposerStaticInit4a476317146a71f54df7713bb8740120
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\User' => __DIR__ . '/../..',
+        'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'ClassPreloader\\ClassList' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassList.php',
@@ -2965,10 +2965,10 @@ class ComposerStaticInit4a476317146a71f54df7713bb8740120
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4a476317146a71f54df7713bb8740120::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4a476317146a71f54df7713bb8740120::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit4a476317146a71f54df7713bb8740120::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit4a476317146a71f54df7713bb8740120::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaa0c8fbb783b61f7076a75144949a582::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaa0c8fbb783b61f7076a75144949a582::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaa0c8fbb783b61f7076a75144949a582::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitaa0c8fbb783b61f7076a75144949a582::$classMap;
 
         }, null, ClassLoader::class);
     }
