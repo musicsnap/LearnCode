@@ -40,10 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'admin' => [
             'driver' => 'session',
-            'provider' => 'backend',
+            'provider' => 'workers',
         ],
 
         'api' => [
@@ -72,10 +71,10 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
 
-        'backend' => [
+        'workers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Worker::class,
         ],
