@@ -31,12 +31,12 @@
             </div>
         </div>
         <div class="col-sm-5">
-            <form method="post" action="{{ url('login') }}">
-                {{ csrf_field() }}
+            <form method="post" action="{{ url('/login') }}">
+                {!! csrf_field() !!}
                 <h4 class="no-margins">登录：</h4>
                 <p class="m-t-md">登录到Laravel后台管理系统</p>
-                <input type="text" class="form-control uname" name="username" id="username" placeholder="用户名" />
-                <input type="password" class="form-control pword m-b" name="password" id="password" placeholder="密码" />
+                <input type="text" class="form-control uname" name="email" id="email" placeholder="用户名" value="{{ old('email') }}" />
+                <input type="password" class="form-control pword m-b" name="password" id="password" placeholder="密码" {{ old('password') }} />
                 <button type="submit" class="btn btn-success btn-block">登录</button>
             </form>
         </div>
