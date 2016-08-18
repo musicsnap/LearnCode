@@ -10,16 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*
+|--------------------------------------------------------------------------
+| Logging In/Out Routes
+|--------------------------------------------------------------------------
+*/
+Route::auth();
 
 
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-});
-
-Route::group(['middleware' => ['web', 'auth','admin']], function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('/home/main', 'HomeController@main');
-
-});
-
+/*
+|--------------------------------------------------------------------------
+| Home Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/', 'HomeController@index');

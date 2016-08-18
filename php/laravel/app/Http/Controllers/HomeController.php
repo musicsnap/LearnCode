@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Route;
+
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -14,11 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index.index');
-    }
-
-    public function main(){
-        echo Route::currentRouteName();
-        return view('index.main');
+        return view('home');
     }
 }
