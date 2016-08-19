@@ -14,12 +14,11 @@ class AdminAuthenticate{
     public function handle($request, Closure $next)
     {
         // 检查是否登录
-        if(!Auth::check()){
-            $returnUrl = $request->getRequestUri();
-            return redirect('/auth/login?returnUrl='.$returnUrl);
+        if(session('userinfo')){
+            return redirect('/admin/index');
+        }else{
+            return redirect('/admin/login');
         }
-
-        $name   = Route::currentRouteName();
         return $next($request);
     }
 }

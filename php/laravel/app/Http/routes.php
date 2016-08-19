@@ -24,3 +24,16 @@ Route::auth();
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'HomeController@index');
+
+
+
+Route::group(['middleware' => ['web']], function () {
+    //后台的登录
+    Route::get('/admin/login','Admin\LoginController@getLogin');
+    Route::post('/admin/login','Admin\LoginController@postLogin');
+    Route::get('/admin/logout','Admin\LoginController@getLogout');
+    //后台的首页
+    Route::get('/admin/index','Admin\IndexController@index');
+
+
+});

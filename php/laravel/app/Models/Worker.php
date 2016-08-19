@@ -6,22 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Worker extends Model
 {
-    //
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'username','mobile', 'email', 'password',
-    ];
+    protected $table='workers';
+    public $timestamps=false;
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+
 }
