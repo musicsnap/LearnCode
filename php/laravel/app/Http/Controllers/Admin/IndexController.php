@@ -14,4 +14,8 @@ class IndexController extends Controller
        return view('admin.index.index');
     }
 
+    public function tree(){
+        return view('admin.index.tree');
+    }
+
 }
