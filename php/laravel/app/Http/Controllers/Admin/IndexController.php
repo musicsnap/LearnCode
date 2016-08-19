@@ -11,8 +11,7 @@ class IndexController extends Controller
 {
     //主页
     public function index(){
-        echo session('userinfo');
-        return "hello world!";
+       return view('admin.index.index');
     }
 
 }
