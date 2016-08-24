@@ -17,7 +17,6 @@
 */
 Route::auth();
 
-
 /*
 |--------------------------------------------------------------------------
 | Home Routes
@@ -25,17 +24,23 @@ Route::auth();
 */
 Route::get('/', 'HomeController@index');
 
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'login'], function () {
+    Route::get('/admin/login', 'Admin\LoginController@getLogin');
+    Route::post('/admin/login', 'Admin\LoginController@postLogin');
 
-
-Route::group(['middleware' => ['web']], function () {
-    //后台的登录
-    Route::get('/admin/login','Admin\LoginController@getLogin');
-    Route::post('/admin/login','Admin\LoginController@postLogin');
     Route::get('/admin/logout','Admin\LoginController@getLogout');
-    //后台的首页
-    Route::get('/admin/index','Admin\IndexController@index');
-
-
-    Route::get('/admin/tree','Admin\IndexController@tree');
-
 });
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+
+    });
+});
+
+
+
