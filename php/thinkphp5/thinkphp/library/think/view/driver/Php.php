@@ -11,7 +11,9 @@
 
 namespace think\view\driver;
 
-use think\Exception;
+use think\App;
+use think\exception\TemplateNotFoundException;
+use think\Loader;
 use think\Log;
 use think\Request;
 
@@ -50,8 +52,8 @@ class Php
     /**
      * 渲染模板文件
      * @access public
-     * @param string $template 模板文件
-     * @param array $data 模板变量
+     * @param string    $template 模板文件
+     * @param array     $data 模板变量
      * @return void
      */
     public function fetch($template, $data = [])
@@ -62,25 +64,37 @@ class Php
         }
         // 模板不存在 抛出异常
         if (!is_file($template)) {
-            throw new Exception('template file not exists:' . $template, 10700);
+            throw new TemplateNotFoundException('template not exists:' . $template, $template);
         }
         // 记录视图信息
-        APP_DEBUG && Log::record('[ VIEW ] ' . $template . ' [ ' . var_export(array_keys($data), true) . ' ]', 'info');
-        extract($data, EXTR_OVERWRITE);
-        include $template;
+        App::$debug && Log::record('[ VIEW ] ' . $template . ' [ ' . var_export(array_keys($data), true) . ' ]', 'info');
+        if (isset($data['template'])) {
+            $__template__ = $template;
+            extract($data, EXTR_OVERWRITE);
+            include $__template__;
+        } else {
+            extract($data, EXTR_OVERWRITE);
+            include $template;
+        }
     }
 
     /**
      * 渲染模板内容
      * @access public
-     * @param string $content 模板内容
-     * @param array $data 模板变量
+     * @param string    $content 模板内容
+     * @param array     $data 模板变量
      * @return void
      */
     public function display($content, $data = [])
     {
-        extract($data, EXTR_OVERWRITE);
-        eval('?>' . $content);
+        if (isset($data['content'])) {
+            $__content__ = $content;
+            extract($data, EXTR_OVERWRITE);
+            eval('?>' . $__content__);
+        } else {
+            extract($data, EXTR_OVERWRITE);
+            eval('?>' . $content);
+        }
     }
 
     /**
@@ -91,8 +105,8 @@ class Php
      */
     private function parseTemplate($template)
     {
-        if (empty($this->config['view_path']) && defined('MODULE_PATH')) {
-            $this->config['view_path'] = MODULE_PATH . 'view' . DS;
+        if (empty($this->config['view_path'])) {
+            $this->config['view_path'] = App::$modulePath . 'view' . DS;
         }
 
         if (strpos($template, '@')) {
@@ -104,7 +118,7 @@ class Php
 
         // 分析模板文件规则
         $request    = Request::instance();
-        $controller = $request->controller();
+        $controller = Loader::parseName($request->controller());
         if ($controller && 0 !== strpos($template, '/')) {
             $depr     = $this->config['view_depr'];
             $template = str_replace(['/', ':'], $depr, $template);
@@ -116,7 +130,6 @@ class Php
             }
         }
         return $path . ltrim($template, '/') . '.' . ltrim($this->config['view_suffix'], '.');
-
     }
 
 }

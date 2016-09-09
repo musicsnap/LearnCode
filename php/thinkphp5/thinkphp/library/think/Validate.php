@@ -11,9 +11,8 @@
 
 namespace think;
 
-use think\Exception;
-use think\Input;
 use think\Request;
+use think\Session;
 
 class Validate
 {
@@ -36,47 +35,54 @@ class Validate
 
     // 验证规则默认提示信息
     protected static $typeMsg = [
-        'require'    => ':attribute不能为空',
-        'number'     => ':attribute必须是数字',
-        'float'      => ':attribute必须是浮点数',
-        'boolean'    => ':attribute必须是布尔值',
-        'email'      => ':attribute格式不符',
-        'array'      => ':attribute必须是数组',
-        'accepted'   => ':attribute必须是yes、on或者1',
-        'date'       => ':attribute格式不符合',
-        'file'       => ':attribute不是有效的上传文件',
-        'alpha'      => ':attribute只能是字母',
-        'alphaNum'   => ':attribute只能是字母和数字',
-        'alphaDash'  => ':attribute只能是字母、数字和下划线_及破折号-',
-        'activeUrl'  => ':attribute不是有效的域名或者IP',
-        'url'        => ':attribute不是有效的URL地址',
-        'ip'         => ':attribute不是有效的IP地址',
-        'dateFormat' => ':attribute必须使用日期格式 :rule',
-        'in'         => ':attribute必须在 :rule 范围内',
-        'notIn'      => ':attribute不能在 :rule 范围内',
-        'between'    => ':attribute只能在 :1 - :2 之间',
-        'notBetween' => ':attribute不能在 :1 - :2 之间',
-        'length'     => ':attribute长度不符合要求 :rule',
-        'max'        => ':attribute长度不能超过 :rule',
-        'min'        => ':attribute长度不能小于 :rule',
-        'after'      => ':attribute日期不能小于 :rule',
-        'before'     => ':attribute日期不能超过 :rule',
-        'expire'     => '不在有效期内 :rule',
-        'allowIp'    => '不允许的IP访问',
-        'denyIp'     => '禁止的IP访问',
-        'confirm'    => ':attribute和字段 :rule 不一致',
-        'egt'        => ':attribute必须大于等于 :rule',
-        'gt'         => ':attribute必须大于 :rule',
-        'elt'        => ':attribute必须小于等于 :rule',
-        'lt'         => ':attribute必须小于 :rule',
-        'eq'         => ':attribute必须等于 :rule',
-        'unique'     => ':attribute已存在',
-        'regex'      => ':attribute不符合指定规则',
-        'method'     => '无效的请求类型',
-        'token'      => '令牌数据无效',
-        'fileSize'   => '上传文件大小不符',
-        'fileExt'    => '上传文件后缀不符',
-        'fileMime'   => '上传文件类型不符',
+        'require'     => ':attribute不能为空',
+        'number'      => ':attribute必须是数字',
+        'float'       => ':attribute必须是浮点数',
+        'boolean'     => ':attribute必须是布尔值',
+        'email'       => ':attribute格式不符',
+        'array'       => ':attribute必须是数组',
+        'accepted'    => ':attribute必须是yes、on或者1',
+        'date'        => ':attribute格式不符合',
+        'file'        => ':attribute不是有效的上传文件',
+        'image'       => ':attribute不是有效的图像文件',
+        'alpha'       => ':attribute只能是字母',
+        'alphaNum'    => ':attribute只能是字母和数字',
+        'alphaDash'   => ':attribute只能是字母、数字和下划线_及破折号-',
+        'activeUrl'   => ':attribute不是有效的域名或者IP',
+        'chs'         => ':attribute只能是汉字',
+        'chsAlpha'    => ':attribute只能是汉字、字母',
+        'chsAlphaNum' => ':attribute只能是汉字、字母和数字',
+        'chsDash'     => ':attribute只能是汉字、字母、数字和下划线_及破折号-',
+        'url'         => ':attribute不是有效的URL地址',
+        'ip'          => ':attribute不是有效的IP地址',
+        'dateFormat'  => ':attribute必须使用日期格式 :rule',
+        'in'          => ':attribute必须在 :rule 范围内',
+        'notIn'       => ':attribute不能在 :rule 范围内',
+        'between'     => ':attribute只能在 :1 - :2 之间',
+        'notBetween'  => ':attribute不能在 :1 - :2 之间',
+        'length'      => ':attribute长度不符合要求 :rule',
+        'max'         => ':attribute长度不能超过 :rule',
+        'min'         => ':attribute长度不能小于 :rule',
+        'after'       => ':attribute日期不能小于 :rule',
+        'before'      => ':attribute日期不能超过 :rule',
+        'expire'      => '不在有效期内 :rule',
+        'allowIp'     => '不允许的IP访问',
+        'denyIp'      => '禁止的IP访问',
+        'confirm'     => ':attribute和字段 :rule 不一致',
+        'different'   => ':attribute和字段 :rule 不能相同',
+        'egt'         => ':attribute必须大于等于 :rule',
+        'gt'          => ':attribute必须大于 :rule',
+        'elt'         => ':attribute必须小于等于 :rule',
+        'lt'          => ':attribute必须小于 :rule',
+        'eq'          => ':attribute必须等于 :rule',
+        'unique'      => ':attribute已存在',
+        'regex'       => ':attribute不符合指定规则',
+        'method'      => '无效的请求类型',
+        'token'       => '令牌数据无效',
+        'fileSize'    => '上传文件大小不符',
+        'fileExt'     => '上传文件后缀不符',
+        'fileMime'    => '上传文件类型不符',
+
     ];
 
     // 当前验证场景
@@ -109,8 +115,8 @@ class Validate
     /**
      * 实例化验证
      * @access public
-     * @param array $rules 验证规则
-     * @param array $message 验证提示信息
+     * @param array     $rules 验证规则
+     * @param array     $message 验证提示信息
      * @return Validate
      */
     public static function make($rules = [], $message = [])
@@ -124,8 +130,8 @@ class Validate
     /**
      * 添加字段验证规则
      * @access protected
-     * @param string|array $name  字段名称或者规则数组
-     * @param mixed $rule  验证规则
+     * @param string|array  $name  字段名称或者规则数组
+     * @param mixed         $rule  验证规则
      * @return Validate
      */
     public function rule($name, $rule = '')
@@ -141,8 +147,8 @@ class Validate
     /**
      * 注册验证（类型）规则
      * @access public
-     * @param string $type  验证规则类型
-     * @param mixed $callback callback方法(或闭包)
+     * @param string    $type  验证规则类型
+     * @param mixed     $callback callback方法(或闭包)
      * @return void
      */
     public static function extend($type, $callback = null)
@@ -157,8 +163,8 @@ class Validate
     /**
      * 获取验证规则的默认提示信息
      * @access protected
-     * @param string|array $type  验证规则类型名称或者数组
-     * @param string $msg  验证提示信息
+     * @param string|array  $type  验证规则类型名称或者数组
+     * @param string        $msg  验证提示信息
      * @return void
      */
     public static function setTypeMsg($type, $msg = null)
@@ -173,8 +179,8 @@ class Validate
     /**
      * 设置提示信息
      * @access public
-     * @param string|array $name  字段名称
-     * @param string $message 提示信息
+     * @param string|array  $name  字段名称
+     * @param string        $message 提示信息
      * @return Validate
      */
     public function message($name, $message = '')
@@ -190,8 +196,8 @@ class Validate
     /**
      * 设置验证场景
      * @access public
-     * @param string|array $name  场景名或者场景设置数组
-     * @param mixed $fields 要验证的字段
+     * @param string|array  $name  场景名或者场景设置数组
+     * @param mixed         $fields 要验证的字段
      * @return Validate
      */
     public function scene($name, $fields = null)
@@ -223,9 +229,9 @@ class Validate
     /**
      * 数据自动验证
      * @access public
-     * @param array $data  数据
-     * @param mixed $rules  验证规则
-     * @param string $scene 验证场景
+     * @param array     $data  数据
+     * @param mixed     $rules  验证规则
+     * @param string    $scene 验证场景
      * @return bool
      */
     public function check($data, $rules = [], $scene = '')
@@ -316,12 +322,12 @@ class Validate
     /**
      * 验证单个字段规则
      * @access protected
-     * @param string $field  字段名
-     * @param mixed $value  字段值
-     * @param mixed $rules  验证规则
-     * @param array $data  数据
-     * @param string $title  字段描述
-     * @param array $msg  提示信息
+     * @param string    $field  字段名
+     * @param mixed     $value  字段值
+     * @param mixed     $rules  验证规则
+     * @param array     $data  数据
+     * @param string    $title  字段描述
+     * @param array     $msg  提示信息
      * @return mixed
      */
     protected function checkItem($field, $value, $rules, $data, $title = '', $msg = [])
@@ -384,38 +390,11 @@ class Validate
     }
 
     /**
-     * 验证表单令牌（需要配置令牌生成行为）
-     * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
-     * @return bool
-     */
-    protected function token($value, $rule, $data)
-    {
-        if (!isset($data[$rule]) || !isset($_SESSION[$rule])) {
-            // 令牌数据无效
-            return false;
-        }
-
-        // 令牌验证
-        list($key, $value) = explode('_', $data[$rule]);
-        if (isset($_SESSION[$rule][$key]) && $value && $_SESSION[$rule][$key] === $value) {
-            // 防止重复提交
-            unset($_SESSION[$rule][$key]); // 验证完成销毁session
-            return true;
-        }
-        // 开启TOKEN重置
-        unset($_SESSION[$rule][$key]);
-        return false;
-    }
-
-    /**
      * 验证是否和某个字段的值一致
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
      * @return bool
      */
     protected function confirm($value, $rule, $data)
@@ -424,10 +403,23 @@ class Validate
     }
 
     /**
+     * 验证是否和某个字段的值是否不同
+     * @access protected
+     * @param mixed $value 字段值
+     * @param mixed $rule  验证规则
+     * @param array $data  数据
+     * @return bool
+     */
+    protected function different($value, $rule, $data)
+    {
+        return $this->getDataValue($data, $rule) != $value;
+    }
+
+    /**
      * 验证是否大于等于某个值
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function egt($value, $rule)
@@ -438,8 +430,8 @@ class Validate
     /**
      * 验证是否大于某个值
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function gt($value, $rule)
@@ -450,8 +442,8 @@ class Validate
     /**
      * 验证是否小于等于某个值
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function elt($value, $rule)
@@ -462,8 +454,8 @@ class Validate
     /**
      * 验证是否小于某个值
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function lt($value, $rule)
@@ -474,8 +466,8 @@ class Validate
     /**
      * 验证是否等于某个值
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function eq($value, $rule)
@@ -486,11 +478,12 @@ class Validate
     /**
      * 验证字段值是否为有效格式
      * @access protected
-     * @param mixed $value  字段值
-     * @param string $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param string    $rule  验证规则
+     * @param array     $data  验证数据
      * @return bool
      */
-    protected function is($value, $rule)
+    protected function is($value, $rule, $data = [])
     {
         switch ($rule) {
             case 'require':
@@ -517,6 +510,22 @@ class Validate
                 // 只允许字母、数字和下划线 破折号
                 $result = $this->regex($value, '/^[A-Za-z0-9\-\_]+$/');
                 break;
+            case 'chs':
+                // 只允许汉字
+                $result = $this->regex($value, '/^[\x{4e00}-\x{9fa5}]+$/u');
+                break;
+            case 'chsAlpha':
+                // 只允许汉字、字母
+                $result = $this->regex($value, '/^[\x{4e00}-\x{9fa5}a-zA-Z]+$/u');
+                break;
+            case 'chsAlphaNum':
+                // 只允许汉字、字母和数字
+                $result = $this->regex($value, '/^[\x{4e00}-\x{9fa5}a-zA-Z0-9]+$/u');
+                break;
+            case 'chsDash':
+                // 只允许汉字、字母、数字和下划线_及破折号-
+                $result = $this->regex($value, '/^[\x{4e00}-\x{9fa5}a-zA-Z0-9\_\-]+$/u');
+                break;
             case 'activeUrl':
                 // 是否为有效的网址
                 $result = checkdnsrr($value);
@@ -534,8 +543,10 @@ class Validate
                 $result = $this->filter($value, FILTER_VALIDATE_FLOAT);
                 break;
             case 'number':
+                $result = is_numeric($value);
+                break;
             case 'integer':
-                // 是否为整形
+                // 是否为整型
                 $result = $this->filter($value, FILTER_VALIDATE_INT);
                 break;
             case 'email':
@@ -544,15 +555,20 @@ class Validate
                 break;
             case 'boolean':
                 // 是否为布尔值
-                $result = $this->filter($value, FILTER_VALIDATE_BOOLEAN);
+                $result = in_array($value, [0, 1, true, false]);
                 break;
             case 'array':
                 // 是否为数组
                 $result = is_array($value);
                 break;
             case 'file':
-                $file   = Input::file($value);
-                $result = !empty($file);
+                $result = $value instanceof \think\File;
+                break;
+            case 'image':
+                $result = $value instanceof \think\File && in_array($this->getImageType($value->getRealPath()), [1, 2, 3, 6]);
+                break;
+            case 'token':
+                $result = $this->token($value, '__token__', $data);
                 break;
             default:
                 if (isset(self::$type[$rule])) {
@@ -566,11 +582,22 @@ class Validate
         return $result;
     }
 
+    // 判断图像类型
+    protected function getImageType($image)
+    {
+        if (function_exists('exif_imagetype')) {
+            return exif_imagetype($image);
+        } else {
+            $info = getimagesize($image);
+            return $info[2];
+        }
+    }
+
     /**
      * 验证是否为合格的域名或者IP 支持A，MX，NS，SOA，PTR，CNAME，AAAA，A6， SRV，NAPTR，TXT 或者 ANY类型
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function activeUrl($value, $rule)
@@ -581,8 +608,8 @@ class Validate
     /**
      * 验证是否有效IP
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则 ipv4 ipv6
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则 ipv4 ipv6
      * @return bool
      */
     protected function ip($value, $rule)
@@ -596,14 +623,13 @@ class Validate
     /**
      * 验证上传文件后缀
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $file  上传文件
+     * @param mixed     $rule  验证规则
      * @return bool
      */
-    protected function fileExt($value, $rule)
+    protected function fileExt($file, $rule)
     {
-        $file = Input::file($value);
-        if (empty($file)) {
+        if (!($file instanceof \think\File)) {
             return false;
         }
         if (is_string($rule)) {
@@ -611,27 +637,26 @@ class Validate
         }
         if (is_array($file)) {
             foreach ($file as $item) {
-                if (!in_array(strtolower($item->getExtension()), $rule)) {
+                if (!$item->checkExt($rule)) {
                     return false;
                 }
             }
             return true;
         } else {
-            return in_array(strtolower($file->getExtension()), $rule);
+            return $file->checkExt($rule);
         }
     }
 
     /**
      * 验证上传文件类型
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $file  上传文件
+     * @param mixed     $rule  验证规则
      * @return bool
      */
-    protected function fileMime($value, $rule)
+    protected function fileMime($file, $rule)
     {
-        $file = Input::file($value);
-        if (empty($file)) {
+        if (!($file instanceof \think\File)) {
             return false;
         }
         if (is_string($rule)) {
@@ -639,49 +664,72 @@ class Validate
         }
         if (is_array($file)) {
             foreach ($file as $item) {
-                if (!in_array(strtolower($item->getMime()), $rule)) {
+                if (!$item->checkMime($rule)) {
                     return false;
                 }
             }
             return true;
         } else {
-            return in_array(strtolower($file->getMime()), $rule);
+            return $file->checkMime($rule);
         }
     }
 
     /**
      * 验证上传文件大小
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $file  上传文件
+     * @param mixed     $rule  验证规则
      * @return bool
      */
-    protected function fileSize($value, $rule)
+    protected function fileSize($file, $rule)
     {
-        $file = Input::file($value);
-        if (empty($file)) {
+        if (!($file instanceof \think\File)) {
             return false;
-        }
-        if (is_string($rule)) {
-            $rule = explode(',', $rule);
         }
         if (is_array($file)) {
             foreach ($file as $item) {
-                if ($item->getSize() > $rule) {
+                if (!$item->checkSize($rule)) {
                     return false;
                 }
             }
             return true;
         } else {
-            return $file->getSize() <= $rule;
+            return $file->checkSize($rule);
         }
+    }
+
+    /**
+     * 验证图片的宽高及类型
+     * @access protected
+     * @param mixed     $file  上传文件
+     * @param mixed     $rule  验证规则
+     * @return bool
+     */
+    protected function image($file, $rule)
+    {
+        if (!($file instanceof \think\File)) {
+            return false;
+        }
+        $rule                        = explode(',', $rule);
+        list($width, $height, $type) = getimagesize($file->getRealPath());
+        if (isset($rule[2])) {
+            $imageType = strtolower($rule[2]);
+            if ('jpeg' == $imageType) {
+                $imageType = 'jpg';
+            }
+            if (image_type_to_extension($type, false) != $imageType) {
+                return false;
+            }
+        }
+        list($w, $h) = $rule;
+        return $w == $width && $h == $height;
     }
 
     /**
      * 验证请求类型
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function method($value, $rule)
@@ -693,8 +741,8 @@ class Validate
     /**
      * 验证时间和日期是否符合指定格式
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function dateFormat($value, $rule)
@@ -706,10 +754,10 @@ class Validate
     /**
      * 验证是否唯一
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则 格式：数据表,字段名,排除ID,主键名
-     * @param array $data  数据
-     * @param string $field  验证字段名
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则 格式：数据表,字段名,排除ID,主键名
+     * @param array     $data  数据
+     * @param string    $field  验证字段名
      * @return bool
      */
     protected function unique($value, $rule, $data, $field)
@@ -748,9 +796,9 @@ class Validate
     /**
      * 使用行为类验证
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
      * @return mixed
      */
     protected function behavior($value, $rule, $data)
@@ -761,8 +809,8 @@ class Validate
     /**
      * 使用filter_var方式验证
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function filter($value, $rule)
@@ -780,9 +828,9 @@ class Validate
     /**
      * 验证某个字段等于某个值的时候必须
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
      * @return bool
      */
     protected function requireIf($value, $rule, $data)
@@ -798,9 +846,9 @@ class Validate
     /**
      * 通过回调方法验证某个字段是否必须
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
      * @return bool
      */
     protected function requireCallback($value, $rule, $data)
@@ -816,9 +864,9 @@ class Validate
     /**
      * 验证某个字段有值的情况下必须
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
-     * @param array $data  数据
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
      * @return bool
      */
     protected function requireWith($value, $rule, $data)
@@ -834,8 +882,8 @@ class Validate
     /**
      * 验证是否在范围内
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function in($value, $rule)
@@ -846,8 +894,8 @@ class Validate
     /**
      * 验证是否不在某个范围
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function notIn($value, $rule)
@@ -858,8 +906,8 @@ class Validate
     /**
      * between验证数据
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function between($value, $rule)
@@ -874,8 +922,8 @@ class Validate
     /**
      * 使用notbetween验证数据
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function notBetween($value, $rule)
@@ -890,13 +938,20 @@ class Validate
     /**
      * 验证数据长度
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function length($value, $rule)
     {
-        $length = strlen((string) $value); // 当前数据长度
+        if (is_array($value)) {
+            $length = count($value);
+        } elseif ($value instanceof \think\File) {
+            $length = $value->getSize();
+        } else {
+            $length = mb_strlen((string) $value);
+        }
+
         if (strpos($rule, ',')) {
             // 长度区间
             list($min, $max) = explode(',', $rule);
@@ -910,34 +965,46 @@ class Validate
     /**
      * 验证数据最大长度
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function max($value, $rule)
     {
-        $length = strlen((string) $value);
+        if (is_array($value)) {
+            $length = count($value);
+        } elseif ($value instanceof \think\File) {
+            $length = $value->getSize();
+        } else {
+            $length = mb_strlen((string) $value);
+        }
         return $length <= $rule;
     }
 
     /**
      * 验证数据最小长度
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function min($value, $rule)
     {
-        $length = strlen((string) $value);
+        if (is_array($value)) {
+            $length = count($value);
+        } elseif ($value instanceof \think\File) {
+            $length = $value->getSize();
+        } else {
+            $length = mb_strlen((string) $value);
+        }
         return $length >= $rule;
     }
 
     /**
      * 验证日期
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function after($value, $rule)
@@ -948,8 +1015,8 @@ class Validate
     /**
      * 验证日期
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function before($value, $rule)
@@ -960,8 +1027,8 @@ class Validate
     /**
      * 验证有效期
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
      * @return bool
      */
     protected function expire($value, $rule)
@@ -983,8 +1050,8 @@ class Validate
     /**
      * 验证IP许可
      * @access protected
-     * @param string $value  字段值
-     * @param mixed $rule  验证规则
+     * @param string    $value  字段值
+     * @param mixed     $rule  验证规则
      * @return mixed
      */
     protected function allowIp($value, $rule)
@@ -995,8 +1062,8 @@ class Validate
     /**
      * 验证IP禁用
      * @access protected
-     * @param string $value  字段值
-     * @param mixed $rule  验证规则
+     * @param string    $value  字段值
+     * @param mixed     $rule  验证规则
      * @return mixed
      */
     protected function denyIp($value, $rule)
@@ -1007,8 +1074,8 @@ class Validate
     /**
      * 使用正则验证数据
      * @access protected
-     * @param mixed $value  字段值
-     * @param mixed $rule  验证规则 正则规则或者预定义正则名
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则 正则规则或者预定义正则名
      * @return mixed
      */
     protected function regex($value, $rule)
@@ -1023,6 +1090,33 @@ class Validate
         return 1 === preg_match($rule, (string) $value);
     }
 
+    /**
+     * 验证表单令牌
+     * @access protected
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则
+     * @param array     $data  数据
+     * @return bool
+     */
+    protected function token($value, $rule, $data)
+    {
+        $rule = !empty($rule) ? $rule : '__token__';
+        if (!isset($data[$rule]) || !Session::has($rule)) {
+            // 令牌数据无效
+            return false;
+        }
+
+        // 令牌验证
+        if (isset($data[$rule]) && Session::get($rule) === $data[$rule]) {
+            // 防止重复提交
+            Session::delete($rule); // 验证完成销毁session
+            return true;
+        }
+        // 开启TOKEN重置
+        Session::delete($rule);
+        return false;
+    }
+
     // 获取错误信息
     public function getError()
     {
@@ -1032,8 +1126,8 @@ class Validate
     /**
      * 获取数据值
      * @access protected
-     * @param array $data  数据
-     * @param string $key  数据标识 支持二维
+     * @param array     $data  数据
+     * @param string    $key  数据标识 支持二维
      * @return mixed
      */
     protected function getDataValue($data, $key)
@@ -1051,10 +1145,10 @@ class Validate
     /**
      * 获取验证规则的错误提示信息
      * @access protected
-     * @param string $attribute  字段英文名
-     * @param string $title  字段描述名
-     * @param string $type  验证规则名称
-     * @param mixed $rule  验证规则数据
+     * @param string    $attribute  字段英文名
+     * @param string    $title  字段描述名
+     * @param string    $type  验证规则名称
+     * @param mixed     $rule  验证规则数据
      * @return string
      */
     protected function getRuleMsg($attribute, $title, $type, $rule)
@@ -1115,7 +1209,7 @@ class Validate
         if (method_exists($class, $method)) {
             return call_user_func_array([$class, $method], $params);
         } else {
-            throw new Exception(__CLASS__ . ':' . $method . ' method not exist');
+            throw new \BadMethodCallException('method not exists:' . __CLASS__ . '->' . $method);
         }
     }
 }

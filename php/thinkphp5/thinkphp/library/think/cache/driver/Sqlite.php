@@ -11,14 +11,14 @@
 
 namespace think\cache\driver;
 
-use think\Cache;
+use think\cache\Driver;
 use think\Exception;
 
 /**
  * Sqlite缓存驱动
  * @author    liu21st <liu21st@gmail.com>
  */
-class Sqlite implements CacheInterface
+class Sqlite extends Driver
 {
 
     protected $options = [
@@ -32,13 +32,13 @@ class Sqlite implements CacheInterface
     /**
      * 架构函数
      * @param array $options 缓存参数
-     * @throws Exception
+     * @throws \BadFunctionCallException
      * @access public
      */
     public function __construct($options = [])
     {
         if (!extension_loaded('sqlite')) {
-            throw new Exception('_NOT_SUPPERT_:sqlite');
+            throw new \BadFunctionCallException('not support: sqlite');
         }
         if (!empty($options)) {
             $this->options = array_merge($this->options, $options);
@@ -48,15 +48,41 @@ class Sqlite implements CacheInterface
     }
 
     /**
+     * 获取实际的缓存标识
+     * @access public
+     * @param string $name 缓存名
+     * @return string
+     */
+    protected function getCacheKey($name)
+    {
+        return $this->options['prefix'] . sqlite_escape_string($name);
+    }
+
+    /**
+     * 判断缓存
+     * @access public
+     * @param string $name 缓存变量名
+     * @return bool
+     */
+    public function has($name)
+    {
+        $name   = $this->getCacheKey($name);
+        $sql    = 'SELECT value FROM ' . $this->options['table'] . ' WHERE var=\'' . $name . '\' AND (expire=0 OR expire >' . $_SERVER['REQUEST_TIME'] . ') LIMIT 1';
+        $result = sqlite_query($this->handler, $sql);
+        return sqlite_num_rows($result);
+    }
+
+    /**
      * 读取缓存
      * @access public
      * @param string $name 缓存变量名
+     * @param mixed  $default 默认值
      * @return mixed
      */
-    public function get($name)
+    public function get($name, $default = false)
     {
-        $name   = $this->options['prefix'] . sqlite_escape_string($name);
-        $sql    = 'SELECT value FROM ' . $this->options['table'] . ' WHERE var=\'' . $name . '\' AND (expire=0 OR expire >' . time() . ') LIMIT 1';
+        $name   = $this->getCacheKey($name);
+        $sql    = 'SELECT value FROM ' . $this->options['table'] . ' WHERE var=\'' . $name . '\' AND (expire=0 OR expire >' . $_SERVER['REQUEST_TIME'] . ') LIMIT 1';
         $result = sqlite_query($this->handler, $sql);
         if (sqlite_num_rows($result)) {
             $content = sqlite_fetch_single($result);
@@ -66,34 +92,74 @@ class Sqlite implements CacheInterface
             }
             return unserialize($content);
         }
-        return false;
+        return $default;
     }
 
     /**
      * 写入缓存
      * @access public
-     * @param string $name 缓存变量名
-     * @param mixed $value  存储数据
-     * @param integer $expire  有效时间（秒）
+     * @param string    $name 缓存变量名
+     * @param mixed     $value  存储数据
+     * @param integer   $expire  有效时间（秒）
      * @return boolean
      */
     public function set($name, $value, $expire = null)
     {
-        $name  = $this->options['prefix'] . sqlite_escape_string($name);
+        $name  = $this->getCacheKey($name);
         $value = sqlite_escape_string(serialize($value));
         if (is_null($expire)) {
             $expire = $this->options['expire'];
         }
-        $expire = (0 == $expire) ? 0 : (time() + $expire); //缓存有效期为0表示永久缓存
+        $expire = (0 == $expire) ? 0 : ($_SERVER['REQUEST_TIME'] + $expire); //缓存有效期为0表示永久缓存
         if (function_exists('gzcompress')) {
             //数据压缩
             $value = gzcompress($value, 3);
         }
-        $sql = 'REPLACE INTO ' . $this->options['table'] . ' (var, value,expire) VALUES (\'' . $name . '\', \'' . $value . '\', \'' . $expire . '\')';
+        if ($this->tag) {
+            $tag       = $this->tag;
+            $this->tag = null;
+        } else {
+            $tag = '';
+        }
+        $sql = 'REPLACE INTO ' . $this->options['table'] . ' (var, value, expire, tag) VALUES (\'' . $name . '\', \'' . $value . '\', \'' . $expire . '\', \'' . $tag . '\')';
         if (sqlite_query($this->handler, $sql)) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 自增缓存（针对数值缓存）
+     * @access public
+     * @param string    $name 缓存变量名
+     * @param int       $step 步长
+     * @return false|int
+     */
+    public function inc($name, $step = 1)
+    {
+        if ($this->has($name)) {
+            $value = $this->get($name) + $step;
+        } else {
+            $value = $step;
+        }
+        return $this->set($name, $value, 0) ? $value : false;
+    }
+
+    /**
+     * 自减缓存（针对数值缓存）
+     * @access public
+     * @param string    $name 缓存变量名
+     * @param int       $step 步长
+     * @return false|int
+     */
+    public function dec($name, $step = 1)
+    {
+        if ($this->has($name)) {
+            $value = $this->get($name) - $step;
+        } else {
+            $value = $step;
+        }
+        return $this->set($name, $value, 0) ? $value : false;
     }
 
     /**
@@ -104,7 +170,7 @@ class Sqlite implements CacheInterface
      */
     public function rm($name)
     {
-        $name = $this->options['prefix'] . sqlite_escape_string($name);
+        $name = $this->getCacheKey($name);
         $sql  = 'DELETE FROM ' . $this->options['table'] . ' WHERE var=\'' . $name . '\'';
         sqlite_query($this->handler, $sql);
         return true;
@@ -113,12 +179,19 @@ class Sqlite implements CacheInterface
     /**
      * 清除缓存
      * @access public
+     * @param string $tag 标签名
      * @return boolean
      */
-    public function clear()
+    public function clear($tag = null)
     {
+        if ($tag) {
+            $name = sqlite_escape_string($tag);
+            $sql  = 'DELETE FROM ' . $this->options['table'] . ' WHERE tag=\'' . $name . '\'';
+            sqlite_query($this->handler, $sql);
+            return true;
+        }
         $sql = 'DELETE FROM ' . $this->options['table'];
         sqlite_query($this->handler, $sql);
-        return;
+        return true;
     }
 }
