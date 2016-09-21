@@ -1,2 +1,6 @@
 /php/thinkphp3/Application/Runtime
+<<<<<<< HEAD
 /.idea
+=======
+/php/laravel/.idea
+>>>>>>> ffaa7ad7b8d4dfbfbe615e508be870c0c8a34af8
