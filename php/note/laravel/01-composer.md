@@ -11,7 +11,7 @@ composer是 PHP 用来管理依赖（dependency）关系的工具。你可以在
 安装 Composer，你只需要下载 composer.phar 可执行文件。此外你也可以直接去下载安装程序下载并且运行<a target="_blank" href="https://getcomposer.org/Composer-Setup.exe"> Composer-Setup.exe</a>，安装这玩意，我记得是死在了下载那个composer.phar的那一步，如果条件可以，你可以翻墙去安装这个玩意！
 
     4、使用 Composer:
-首先你需要新建一个composer.json文件，并且你要简单的告诉 Composer 你的项目需要依赖哪些包。这个包可以参考https://packagist.org/,定义好这些你就可以执行 install 命令：<br>php composer.phar install（这里要在当前的目录下）或者composer install
+首先你需要新建一个composer.json文件，并且你要简单的告诉 Composer 你的项目需要依赖哪些包。这个包可以参考<a href="https://packagist.org/" target="_blank">https://packagist.org/</a>定义好这些你就可以执行 install 命令：<br>php composer.phar install（这里要在当前的目录下）或者composer install
 
     5、上面的都是废话，你可以直接参考文档：http://www.phpcomposer.com/
 # 安装laravel
