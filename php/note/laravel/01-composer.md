@@ -32,6 +32,8 @@ composer global require "laravel/installer"
 这样就安装了一个blog的项目！
 对于composer没有安装好的同学，那就使用 composer.phar！
 
+    (3)下载一键安装包：http://www.golaravel.com/download/
+
 这样就结束啦，是不是很简单！
 
 这边推荐一些有关laravel的网站：
